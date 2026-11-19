@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="caminho-certo-da-ia" name="inema-course"/>
+<title>Module 1.1 · Using AI as a craft | The Right Path to AI</title>
+<!-- ===================== BLOCO VERBATIM 1 — Manifesto ===================== -->
+<script data-inema-manifest="" type="application/json">
+{
+  "course": "caminho-certo-da-ia",
+  "courseTitle": "O Caminho Certo da IA",
+  "tracks": [
+    { "n": "1", "slug": "trilha1", "title": "Alavancar com IA", "color": "emerald",
+      "modules": [
+        { "id": "1-1", "slug": "modulo-1-1", "title": "Usar IA como ofício", "topics": 7, "href": "curso/trilha1/modulo-1-1.html" }
+      ] },
+    { "n": "2", "slug": "trilha2", "title": "Ser insubstituível", "color": "blue",
+      "modules": [
+        { "id": "2-1", "slug": "modulo-2-1", "title": "Habilidades de mente", "topics": 6, "href": "curso/trilha2/modulo-2-1.html" },
+        { "id": "2-2", "slug": "modulo-2-2", "title": "Habilidades de relação e caráter", "topics": 6, "href": "curso/trilha2/modulo-2-2.html" }
+      ] }
+  ]
+}
+  </script>
+<!-- ===================== BLOCO VERBATIM 2 — Anti-FOUC (PRIMEIRO, antes do Tailwind) ===================== -->
+<script>
+  (function () {
+    try {
+      var html = document.documentElement;
+      var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+      function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+      var p = clone(DEF);
+      try {
+        var raw = localStorage.getItem('inema.prefs');
+        if (raw) {
+          var parsed = JSON.parse(raw);
+          if (parsed && typeof parsed === 'object') {
+            for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k];
+          }
+        } else {
+          var legacy = localStorage.getItem('theme');
+          if (legacy === 'light') p.theme = 'claro';
+          else if (legacy === 'dark') p.theme = 'inema-dark';
+        }
+      } catch (e) { p = clone(DEF); }
+
+      var THEMES = {
+        'inema-dark': { dark: true,  attr: null,        cs: 'dark'  },
+        'claro':      { dark: false, attr: null,        cs: 'light' },
+        'sepia':      { dark: false, attr: 'sepia',     cs: 'light' },
+        'foco':       { dark: null,  attr: 'foco',      cs: null    },
+        'contraste':  { dark: true,  attr: 'contraste', cs: 'dark'  }
+      };
+      var t = THEMES[p.theme] || THEMES['inema-dark'];
+
+      if (t.dark === true) html.classList.add('dark');
+      else if (t.dark === false) html.classList.remove('dark');
+
+      if (t.attr) html.setAttribute('data-theme', t.attr);
+      else html.removeAttribute('data-theme');
+
+      html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+
+      html.setAttribute('data-font', p.font || 'inter');
+      html.setAttribute('data-accent', p.accent || 'emerald');
+
+      var s = html.style;
+      var scale = (+p.fontScale || 100);
+      s.setProperty('--inema-font-scale', (scale / 100).toString());
+      s.setProperty('font-size', scale + '%');
+      s.setProperty('--measure', (+p.lineWidth || 68) + 'ch');
+      s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+      var fam = p.font === 'system'
+        ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+        : (p.font === 'leitura'
+          ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif'
+          : '"Inter", system-ui, sans-serif');
+      s.setProperty('--font-body', fam);
+
+      var ACC = {
+        emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66],
+        amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60]
+      };
+      var a = ACC[p.accent] || ACC.emerald;
+      s.setProperty('--accent-h', a[0] + '');
+      s.setProperty('--accent-s', a[1] + '%');
+      s.setProperty('--accent-l', a[2] + '%');
+      s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+    } catch (err) {
+      try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {}
+    }
+  })();
+  </script>
+<!-- Folha de estilos da camada de aprendizagem -->
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<!-- ===================== Tailwind ===================== -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#FACC15',
+        dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+      } } }
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+
+    /* Light mode - Parte 1 Base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - Parte 2 acento emerald */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .bg-emerald-900\/20 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .bg-emerald-900\/30 { background-color: rgba(5, 150, 105, 0.10); }
+    html:not(.dark) .bg-emerald-900\/40 { background-color: rgba(5, 150, 105, 0.12); }
+    /* Trilha 2 (botao nav) */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .bg-blue-900\/20 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+
+    /* Light mode - Parte 3 remove gradientes + especiais */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .text-red-400 { color: #b91c1c; }
+    html:not(.dark) .bg-red-900\/20 { background-color: rgba(185, 28, 28, 0.07); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(185, 28, 28, 0.25); }
+
+    /* Light mode - Parte 4 nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+
+    /* Parte 5 - bordas suaves dark */
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+
+    /* code box */
+    .codebox { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    /* alvos de ancora nao ficam sob o nav sticky (erro #25) */
+    [id^="topico-"], [id^="modulo-"], .inema-anchor { scroll-margin-top: 5rem; }
+
+    /* SVG hero pulse */
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-of-type(2){animation-delay:.3s} .wf-a:nth-of-type(3){animation-delay:.6s}
+    }
+  </style>
+<link href="https://inematds.github.io/caminho-certo-da-ia/curso/trilha1/modulo-1-1.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/caminho-certo-da-ia/en/curso/trilha1/modulo-1-1.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/caminho-certo-da-ia/es/curso/trilha1/modulo-1-1.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha1/modulo-1-1.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="modulo-1-1.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">EN</a><a href="../../../es/curso/trilha1/modulo-1-1.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<a class="skip sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:px-3 focus:py-2 focus:bg-emerald-600 focus:text-white focus:rounded-lg" href="#conteudo">Skip to content</a>
+<!-- ===================== NAV (igual a todas as paginas) ===================== -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-primary hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧭</span>
+<span class="font-bold text-lg hidden sm:inline">The Right Path to AI</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10" href="index.html">
+<span class="sm:hidden">T1</span>
+<span class="hidden sm:inline">Augment with AI</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors" href="../trilha2/index.html">
+<span class="sm:hidden">T2</span>
+<span class="hidden sm:inline">Be irreplaceable</span>
+</a>
+<button class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-neutral-300 hover:text-neutral-100 transition-colors text-sm" data-inema-journey-open="" type="button">
+<span aria-hidden="true">◷</span>
+<span>My journey</span>
+<span class="inema-journey-badge" data-count="0" data-inema-journey-badge=""></span>
+</button>
+<button aria-label="Switch between light and dark themes" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20">
+<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+</svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- BREADCRUMB -->
+<nav aria-label="Navigation track" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-emerald-400" href="../../index.html">Home</a>
+<span>/</span>
+<a class="hover:text-emerald-400" href="index.html">Track 1</a>
+<span>/</span>
+<span class="text-emerald-400">Module 1.1</span>
+</div>
+</nav>
+<!-- HEADER DO MODULO -->
+<header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MODULE 1.1
+      </span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🛠️ Use AI as a craft</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">
+        AI isn’t magic or a toy—it’s a work tool you learn to use like
+        any other craft. Here are the 7 habits that separate people who “play around with ChatGPT” from those who
+        deliver real results with AI in any field.
+      </p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-emerald-400">7</div>
+<div class="text-xs text-neutral-400">Topics</div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-emerald-400">~55</div>
+<div class="text-xs text-neutral-400">Minutes</div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-emerald-400">Basic</div>
+<div class="text-xs text-neutral-400">Level</div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+<div class="text-xl font-bold text-emerald-400">Practice</div>
+<div class="text-xs text-neutral-400">Type</div>
+</div>
+</div>
+<!-- Anel de progresso do modulo (camada v2) -->
+<div class="flex items-center gap-4 mt-8">
+<div aria-label="Module 1.1 progress" aria-valuemax="100" aria-valuemin="0" class="inema-ring" data-inema-meter="modulo:1-1" role="progressbar">
+<span class="inema-ring__value" data-inema-meter-pct="">0%</span>
+<svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewbox="0 0 36 36"><circle cx="18" cy="18" data-inema-ring="" fill="none" r="16" stroke="none"></circle></svg>
+</div>
+<div>
+<p class="text-sm font-semibold text-neutral-100">Your progress in this module</p>
+<p class="text-sm text-neutral-400"><span data-inema-meter-frac="">0 of 7</span> topics · mark each one "read" when you're done.</p>
+</div>
+</div>
+</div>
+</header>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:grid lg:grid-cols-[220px_1fr] lg:gap-10">
+<!-- TOC sticky + scrollspy (camada v2) -->
+<nav aria-label="Page index" class="hidden lg:block sticky top-24 self-start" data-inema-toc="">
+<p class="text-sm text-neutral-400 mb-3">Section <span data-inema-section-counter="">1 of 7</span></p>
+<ol class="space-y-1 text-sm">
+<li><a class="block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-1">1. AI isn’t just for technical people</a></li>
+<li><a class="block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-2">2. Become the “AI person”</a></li>
+<li><a class="block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-3">3. Human judgment</a></li>
+<li><a class="block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-4">4. Context engineering</a></li>
+<li><a class="block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-5">5. Work iteratively</a></li>
+<li><a class="block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-6">6. Automate with discernment</a></li>
+<li><a class="block py-1 text-neutral-400 hover:text-emerald-400 transition-colors" href="#topico-7">7. Professional and financial security</a></li>
+</ol>
+</nav>
+<main data-inema-module="1-1" data-inema-track="1" id="conteudo">
+<h2 class="text-2xl font-bold mb-6">Detailed content</h2>
+<!-- "Novo aqui?" — termos base (erro #31) -->
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-12">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🧭</span> New here? 4 words before you start</h3>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li><strong class="text-neutral-100">AI / LLM:</strong> an "LLM" (large language model) is the type of AI that runs behind ChatGPT, Claude, or Gemini. You chat in text, and it responds in text.</li>
+<li><strong class="text-neutral-100">Prompt:</strong> is the message you write to AI. “Good prompt” = a clear request with context, not a question out of the blue.</li>
+<li><strong class="text-neutral-100">Context:</strong> the information you provide along with your request (your data, examples, rules). It’s what makes the answer tailored to you.</li>
+<li><strong class="text-neutral-100">Hallucination:</strong> when AI makes up a data point that looks true. It happens—that’s why human review is part of the job.</li>
+</ul>
+</div>
+<!-- ===================== TOPICO 1 ===================== -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-1" id="topico-1">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🌍 AI isn't just for tech professionals</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" type="button">
+<span aria-hidden="true">?</span><span>I have a question</span>
+</button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t1-p1">
+          There’s a myth that holds a lot of people back: that “AI is for programmers.” It’s false. You
+          <strong class="text-emerald-400">you don’t need to write a single line of code</strong> to get a real advantage from
+          AI. People who apply AI to concrete tasks in their own fields—writing, sales, planning,
+          customer service, legal, HR—get ahead of those who wait for “someone in IT” to solve it.
+        </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">What is</h3>
+<p class="text-neutral-300" data-inema-block="m1-1-t1-p2">
+            Treat AI as a general-purpose tool that lives within your work, not as a separate technical subject. The advantage comes from applying AI to <strong class="text-neutral-100">area you already
+            know</strong> — where you know what a good answer looks like and what’s nonsense.
+          </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ What to DO</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Take a task you already know how to do and use AI to do it faster.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Start with your own work, where you can judge the result.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Measure time: did what used to take 1h take 20 min?</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ What NOT to do</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Wait until you’re “technical” to start using it.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Use AI in a field you don't understand — you won't know whether the answer is any good.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Outsource to “the IT folks” what is your responsibility.</span></li>
+</ul>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">Why learn</h3>
+<p class="text-neutral-300 mb-4" data-inema-block="m1-1-t1-p3">
+            Because the most useful AI is the kind that fits into your current workflow, not the kind that requires you to become
+            someone else. The professional who knows how to use AI in their own field <strong class="text-neutral-100">increases their own
+            value without changing careers</strong>. And there's evidence for it: in customer support, AI increased average productivity by +14% — and by <strong class="text-emerald-400">+34% for beginners</strong>, because
+            it spreads the best practices of the most experienced.
+          </p>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">📊</span> Why this matters (data)</h3>
+<p class="text-neutral-300 text-sm"><strong>+14% on average and +34% for beginners</strong> productivity in customer support — a peer-reviewed study of 3 million real conversations (Brynjolfsson, Li &amp; Raymond, NBER w31161, published in <em>Quarterly Journal of Economics</em>). The benefit is real and greater for those just starting out.</p>
+</div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-3">Key concepts</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Domain &gt; code</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Real task &gt; demo</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">+34% for beginners</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Initiative &gt; waiting</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center justify-start gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span>
+<span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Mark as read</span>
+<span class="inema-label-done">Read</span>
+</button>
+</div>
+</section>
+<!-- ===================== TOPICO 2 ===================== -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-2" id="topico-2">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">⭐ Become the team's “AI person”</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" type="button">
+<span aria-hidden="true">?</span><span>I have a question</span>
+</button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t2-p1">
+          Almost every team has an open position: the person who <strong class="text-emerald-400">solves
+          real problems with AI before others do</strong>. It’s not the biggest technical expert — it’s the person who brings a
+          ready-to-use solution to the meeting. You earn that position through small, visible wins, not a degree.
+        </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">What is</h3>
+<p class="text-neutral-300" data-inema-block="m1-1-t2-p2">
+            Become the team’s go-to practitioner for applying AI to concrete, everyday problems. The
+            key is <strong class="text-neutral-100">solve and show</strong>: you take a recurring pain point for the team (a
+            tedious report, a meeting summary, a standard response) and deliver a working solution.
+          </p>
+</div>
+<!-- Timeline: como virar referencia em 4 passos -->
+<h3 class="text-lg font-semibold text-emerald-400 mb-4">How it works in practice (4 steps)</h3>
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Choose a small, recurring pain point</h4>
+<p class="text-neutral-300 text-sm">Something the team does every week that nobody likes. The more repetitive it is, the greater the perceived gain.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Solve it yourself, with AI, on the side</h4>
+<p class="text-neutral-300 text-sm">Don’t promise anything. Iterate until it truly works on the real task (not in a demo).</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Show the result, not the process</h4>
+<p class="text-neutral-300 text-sm">“Look, I automated the meeting minutes summary—it saves 2h a week.” Results speak louder than jargon.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold">4</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Teach the next person</h4>
+<p class="text-neutral-300 text-sm">Sharing what worked multiplies its value and establishes you as the team’s go-to person.</p>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">Why learn</h3>
+<p class="text-neutral-300 mb-4" data-inema-block="m1-1-t2-p3">
+            Because in a market where <strong class="text-emerald-400">63% of companies</strong> point to the lack of
+            qualifications as the biggest barrier (WEF, 2025), being the person who helps the team move forward with AI is scarce
+            career capital. It’s not about knowing everything — it’s about solving problems with AI <strong class="text-neutral-100">before</strong> of
+            others and make it visible.
+          </p>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">📊</span> Why this matters (data)</h3>
+<p class="text-neutral-300 text-sm"><strong>63% of employers</strong> cite the skills gap as the biggest barrier to transformation by 2030, and <strong>85% plan to prioritize upskilling</strong> (WEF Future of Jobs Report 2025). Whoever takes on the “AI person” role fills exactly this gap.</p>
+</div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-3">Key concepts</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Solve &gt; explain</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Small wins</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Make visible</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Teach the next person</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center justify-start gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span>
+<span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Mark as read</span>
+<span class="inema-label-done">Read</span>
+</button>
+</div>
+</section>
+<!-- ===================== TOPICO 3 ===================== -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-3" id="topico-3">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">⚖️ Use AI with human judgment</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" type="button">
+<span aria-hidden="true">?</span><span>I have a question</span>
+</button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t3-p1">
+          AI generates answers <strong class="text-emerald-400">convincing — not always correct</strong>. Accepting any
+          output without reviewing it is the fastest way to be confidently wrong. The habit that separates the amateur from the
+          professional is simple: review, adapt it to your style, and decide whether the result deserves to bear your
+          name.
+        </p>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">💡</span> What is “ground truth”?</h3>
+<p class="text-neutral-300 text-sm">“Ground truth” is the <strong class="text-neutral-100">actual answer key</strong> — the truth you use to check AI’s answer. When AI says “this is 92% correct,” the first question to ask is: <em>“is the answer key it used really true?”</em> Trusting the sales material’s metric instead of questioning the ground truth is the #1 evaluation failure (MIT Sloan Management Review).</p>
+</div>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">What is</h3>
+<p class="text-neutral-300" data-inema-block="m1-1-t3-p2">
+            Keep humans in control of the decision. AI proposes; you review, correct, adapt, and
+            <strong class="text-neutral-100">owns the result</strong>. You are the editor responsible, not a rubber stamp. This applies
+            especially to anything involving data, numbers, proper names, or factual claims.
+          </p>
+</div>
+<!-- Exemplo COPY-RUN: checklist de verificacao -->
+<h3 class="text-lg font-semibold text-emerald-400 mb-3">Practical example (copy and use)</h3>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<p class="text-sm text-neutral-400 mb-1"><strong class="text-emerald-400">Objective:</strong> ask the AI itself to list where it might be wrong before you trust the answer.</p>
+<p class="text-sm text-neutral-400 mb-3"><strong class="text-emerald-400">How to verify:</strong> the answer should include a list of risky claims and what to check; if it says "everything looks good, trust it," the prompt failed.</p>
+<pre class="codebox bg-dark-900 border border-dark-600 rounded-lg p-4 overflow-auto text-sm text-neutral-300"><code>Aja como um revisor cético do texto abaixo.
+Não reescreva. Em vez disso:
+1. Liste cada afirmação factual (número, data, nome, citação).
+2. Para cada uma, diga: "verificável?" e "como eu confirmaria?".
+3. Marque o que pode ser alucinação ou suposição minha.
+4. Termine com 1 frase: o risco mais alto se eu publicar isto sem checar.
+
+TEXTO:
+&lt;cole aqui o texto que a IA gerou&gt;</code></pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Human judgment</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Check numbers, dates, and names against the source.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Adapt the tone to your context and audience.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Only publish what you’d stand behind in a meeting.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Automatic stamp of approval</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Copying and pasting the answer as if it were true.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Believe the metric the tool itself promotes.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Blaming "AI" for the error — your name is on the deliverable.</span></li>
+</ul>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">Why learn</h3>
+<p class="text-neutral-300 mb-4" data-inema-block="m1-1-t3-p3">
+            Because for critical work <strong class="text-emerald-400">90% of people still prefer humans</strong> (MIT
+            NANDA)—exactly because someone needs to make sure it’s right. Judgment is what AI
+            doesn’t provide, and what keeps you in control.
+          </p>
+</div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-3">Key concepts</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Convincing ≠ correct</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Check the ground truth</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">You are the editor</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">You sign</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center justify-start gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span>
+<span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Mark as read</span>
+<span class="inema-label-done">Read</span>
+</button>
+</div>
+</section>
+<!-- ===================== TOPICO 4 — ENGENHARIA DE CONTEXTO (com SVG + COPY-RUN principal) ===================== -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-4" id="topico-4">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">🧩 Context engineering</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" type="button">
+<span aria-hidden="true">?</span><span>I have a question</span>
+</button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t4-p1">
+          This is <strong class="text-emerald-400">the biggest lever of all</strong>. The difference between a mediocre answer
+          and a tailored answer almost never comes down to “knowing the magic prompt” — it comes down to the context you
+          provide. Instead of having a generic conversation, you give AI real information: your
+          projects, priorities, examples of how you work, and the rules that matter.
+        </p>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">💡</span> What is "context engineering"?</h3>
+<p class="text-neutral-300 text-sm">It's the habit of <strong class="text-neutral-100">deliberately assemble the information the AI receives along with the request</strong> — role, real data, examples, constraints, and output format—instead of sending a question out of the blue. “Engineering” here doesn’t mean programming: it means organizing what goes in. AI is only as good as the context you give it.</p>
+</div>
+<!-- SVG futurista: contexto bom vs ruim (erro #17) -->
+<div class="rounded-2xl border border-emerald-500/30 bg-dark-900/40 p-3 sm:p-4 mb-4 overflow-hidden">
+<svg aria-label="Comparison: a bare question gets a generic answer; a request with rich context (role, data, examples, format) gets a tailored answer" class="w-full h-auto" role="img" viewbox="0 0 1000 300">
+<defs>
+<lineargradient id="m11-grad" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0" stop-color="#34d399"></stop><stop offset="1" stop-color="#10b981"></stop>
+</lineargradient>
+<filter height="180%" id="m11-glow" width="180%" x="-40%" y="-40%">
+<fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge>
+</filter>
+<pattern height="32" id="m11-grid" patternunits="userSpaceOnUse" width="32">
+<circle cx="1.3" cy="1.3" fill="#10b981" opacity="0.10" r="1.3"></circle>
+</pattern>
+<marker id="m11-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#34d399"></path></marker>
+<marker id="m11-ahc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<rect fill="url(#m11-grid)" height="300" width="1000" x="0" y="0"></rect>
+<!-- linha divisoria -->
+<line stroke="#374151" stroke-dasharray="8 8" stroke-width="2" x1="500" x2="500" y1="20" y2="280"></line>
+<text fill="#9ca3af" font-family="Inter,sans-serif" font-size="14" font-weight="600" text-anchor="middle" x="250" y="34">Open-ended question</text>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="14" font-weight="600" text-anchor="middle" x="750" y="34">Request with context</text>
+<!-- esquerda: 1 caixinha -> resposta generica -->
+<rect fill="#1f2937" height="50" rx="10" stroke="#9ca3af" stroke-width="2" width="190" x="150" y="120"></rect>
+<text fill="#e5e7eb" font-family="Inter,sans-serif" font-size="13" text-anchor="middle" x="245" y="151">“write an email”</text>
+<path d="M245,170 L245,212" marker-end="url(#m11-ah)" opacity="0.5" stroke="#9ca3af" stroke-width="1.8"></path>
+<rect fill="#26201a" height="46" rx="10" stroke="#9ca3af" stroke-width="2" width="190" x="150" y="214"></rect>
+<text fill="#cbd5e1" font-family="Inter,sans-serif" font-size="12.5" text-anchor="middle" x="245" y="242">generic answer</text>
+<!-- direita: 4 blocos de contexto (ciano) -> resultado (verde glow) -->
+<g font-family="Inter,sans-serif" font-size="12" font-weight="600">
+<g class="wf-a"><rect fill="#0e1b26" height="30" rx="8" stroke="#38bdf8" stroke-width="2" width="150" x="560" y="58"></rect><text fill="#bfe6ff" text-anchor="middle" x="635" y="78">role + objective</text></g>
+<g class="wf-a"><rect fill="#0e1b26" height="30" rx="8" stroke="#38bdf8" stroke-width="2" width="150" x="560" y="96"></rect><text fill="#bfe6ff" text-anchor="middle" x="635" y="116">real data</text></g>
+<g class="wf-a"><rect fill="#0e1b26" height="30" rx="8" stroke="#38bdf8" stroke-width="2" width="150" x="560" y="134"></rect><text fill="#bfe6ff" text-anchor="middle" x="635" y="154">example in your own style</text></g>
+<g class="wf-a"><rect fill="#0e1b26" height="30" rx="8" stroke="#38bdf8" stroke-width="2" width="150" x="560" y="172"></rect><text fill="#bfe6ff" text-anchor="middle" x="635" y="192">format + constraints</text></g>
+</g>
+<g fill="none" opacity="0.55" stroke="#38bdf8" stroke-width="1.8">
+<path d="M710,73  C780,73 800,150 840,150" marker-end="url(#m11-ahc)"></path>
+<path d="M710,111 C780,111 800,150 840,150" marker-end="url(#m11-ahc)"></path>
+<path d="M710,149 L840,150" marker-end="url(#m11-ahc)"></path>
+<path d="M710,187 C780,187 800,150 840,150" marker-end="url(#m11-ahc)"></path>
+</g>
+<g filter="url(#m11-glow)"><rect fill="#0e2018" height="60" rx="13" stroke="url(#m11-grad)" stroke-width="2" width="130" x="840" y="120"></rect></g>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="905" y="146">answer</text>
+<text fill="#a7f3d0" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="905" y="164">tailored</text>
+</svg>
+</div>
+<p class="text-sm text-neutral-400 mb-6 px-1">
+<strong class="text-emerald-400">How to read:</strong> on the left, a loose request goes in and a generic response comes out.
+          On the right, the four context blocks (cyan)—role, real data, an example of your
+          style, and the expected format—converge into a tailored response (green). <strong class="text-neutral-100">Context is
+          what changes the outcome</strong>, not the “magic word”.
+        </p>
+<!-- COPY-RUN principal do modulo (erro #30) -->
+<h3 class="text-lg font-semibold text-emerald-400 mb-3">Practical example (copy, replace the fields, and run)</h3>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+<p class="text-sm text-neutral-400 mb-1"><strong class="text-emerald-400">Objective:</strong> turn a vague task ("help me with X") into a request with context that produces a usable response on the first try.</p>
+<p class="text-sm text-neutral-400 mb-3"><strong class="text-emerald-400">How to verify:</strong> the answer should sound like you (not generic), follow the format, and use the data you pasted. If it comes out neutral and "by the book," it lacked context.</p>
+<pre class="codebox bg-dark-900 border border-dark-600 rounded-lg p-4 overflow-auto text-sm text-neutral-300"><code># PAPEL
+Você é &lt;seu cargo, ex.: analista de marketing&gt; e escreve no meu lugar.
+
+# OBJETIVO
+&lt;o que eu quero, em 1 frase, ex.: um e-mail pedindo prazo extra a um cliente&gt;
+
+# CONTEXTO REAL (use isto, não invente)
+- Público: &lt;quem vai ler&gt;
+- Situação: &lt;o que está acontecendo&gt;
+- Dados/fatos: &lt;cole números, nomes, datas reais&gt;
+
+# COMO EU FALO (imite este tom)
+&lt;cole 1 exemplo curto de algo que você já escreveu&gt;
+
+# RESTRIÇÕES
+- Tamanho: &lt;ex.: até 120 palavras&gt;
+- Não usar: &lt;jargão, promessas que não posso cumprir&gt;
+
+# SAÍDA
+Entregue só o texto final. Depois, em 1 linha, diga o que você assumiu.</code></pre>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Practical tip</h3>
+<p class="text-neutral-300 text-sm">Save this framework in a notes app and reuse it. In a few weeks, you’ll have a “base context” for your work that helps any AI respond in your style—it’s the asset that saves you the most time day to day.</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">Why learn</h3>
+<p class="text-neutral-300 mb-4" data-inema-block="m1-1-t4-p2">
+            Because the root cause the MIT identified for so many AI projects failing is
+            <strong class="text-emerald-400">“learning gap”</strong>: the tool forgets the context and requires you to
+            provide it every time. People who master context engineering work around exactly this bottleneck—and
+            get much better results from the same AI than their neighbor does.
+          </p>
+</div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-3">Key concepts</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Real data &gt; generic prompt</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Example &gt; vague instruction</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Role + format</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Reusable baseline context</p></div>
+</div>
+<!-- Checagem leve opcional (camada v2) -->
+<div class="inema-check mt-8 bg-dark-800 border border-dark-600 rounded-xl p-6" data-inema-check="modulo-1-1#q1">
+<p class="inema-check__q font-medium mb-4">Self-recovery (optional): which of these is the best use of context engineering?</p>
+<div class="inema-check__options inema-check-options space-y-2">
+<button class="inema-check__option block w-full text-left px-4 py-2 rounded-lg bg-dark-700 border border-dark-600 hover:bg-dark-600 transition-colors text-sm" data-inema-check-option="0" type="button">Find the “magic word” that makes AI get it right.</button>
+<button class="inema-check__option block w-full text-left px-4 py-2 rounded-lg bg-dark-700 border border-dark-600 hover:bg-dark-600 transition-colors text-sm" data-inema-check-option="1" type="button">Provide a role, real data, an example in your style, and the output format.</button>
+<button class="inema-check__option block w-full text-left px-4 py-2 rounded-lg bg-dark-700 border border-dark-600 hover:bg-dark-600 transition-colors text-sm" data-inema-check-option="2" type="button">Write the longest prompt possible, with everything that comes to mind.</button>
+</div>
+<div aria-live="polite" class="mt-4 text-sm" data-inema-check-feedback="" role="status"></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center justify-start gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span>
+<span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Mark as read</span>
+<span class="inema-label-done">Read</span>
+</button>
+</div>
+</section>
+<!-- ===================== TOPICO 5 ===================== -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-5" id="topico-5">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🔁 Work iteratively</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" type="button">
+<span aria-hidden="true">?</span><span>I have a question</span>
+</button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t5-p1">
+          Stop trying to get everything right on the first try. With AI, speed comes from
+          <strong class="text-emerald-400">short cycle</strong>: make a quick draft, test it, see what’s wrong, fix it, and
+          repeat. Each round teaches you what to ask for next time. It’s the opposite of getting stuck
+          searching for the perfect prompt.
+        </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">What is</h3>
+<p class="text-neutral-300" data-inema-block="m1-1-t5-p0">
+            Treat work as a <strong class="text-neutral-100">loop</strong> instead of a straight line: draft,
+            test, evaluate, and correct, repeating the cycle. Each pass builds on what you learned in the previous one — you
+            don’t start from scratch; you improve the version you already have.
+          </p>
+</div>
+<!-- SVG: ciclo de iteracao -->
+<div class="rounded-2xl border border-emerald-500/30 bg-dark-900/40 p-3 sm:p-4 mb-4 overflow-hidden">
+<svg aria-label="Iteration cycle: draft, test, evaluate, and revise, returning to the draft—each round improves the result" class="w-full h-auto" role="img" viewbox="0 0 900 230">
+<defs>
+<filter height="180%" id="m11i-glow" width="180%" x="-40%" y="-40%">
+<fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge>
+</filter>
+<pattern height="32" id="m11i-grid" patternunits="userSpaceOnUse" width="32">
+<circle cx="1.3" cy="1.3" fill="#10b981" opacity="0.10" r="1.3"></circle>
+</pattern>
+<marker id="m11i-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#34d399"></path></marker>
+<marker id="m11i-ahc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<rect fill="url(#m11i-grid)" height="230" width="900" x="0" y="0"></rect>
+<g font-family="Inter,sans-serif" font-size="14" font-weight="600">
+<rect fill="#0e2018" height="46" rx="11" stroke="#34d399" stroke-width="2" width="150" x="60" y="92"></rect><text fill="#34d399" text-anchor="middle" x="135" y="120">1. Draft</text>
+<rect fill="#0e2018" height="46" rx="11" stroke="#34d399" stroke-width="2" width="150" x="300" y="40"></rect><text fill="#34d399" text-anchor="middle" x="375" y="68">2. Test</text>
+<rect fill="#0e2018" height="46" rx="11" stroke="#34d399" stroke-width="2" width="150" x="300" y="144"></rect><text fill="#34d399" text-anchor="middle" x="375" y="172">3. Evaluate</text>
+<g filter="url(#m11i-glow)"><rect fill="#0e1b26" height="46" rx="11" stroke="#38bdf8" stroke-width="2" width="170" x="560" y="92"></rect></g><text fill="#bfe6ff" text-anchor="middle" x="645" y="120">4. Correct</text>
+</g>
+<g fill="none" opacity="0.6" stroke="#34d399" stroke-width="2">
+<path d="M210,108 C250,96 270,72 300,64" marker-end="url(#m11i-ah)"></path>
+<path d="M375,86 L375,144" marker-end="url(#m11i-ah)"></path>
+<path d="M450,167 C500,155 520,128 560,118" marker-end="url(#m11i-ah)"></path>
+</g>
+<!-- volta (ciano) -->
+<path d="M645,138 C645,205 240,205 135,150" fill="none" marker-end="url(#m11i-ahc)" opacity="0.55" stroke="#38bdf8" stroke-dasharray="7 6" stroke-width="1.8"></path>
+<text fill="#9ad6ff" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="400" y="222">back to the draft—better with every cycle</text>
+</svg>
+</div>
+<p class="text-sm text-neutral-400 mb-6 px-1">
+<strong class="text-emerald-400">How to read:</strong> the work isn’t a straight line to perfection—it’s a
+          <strong class="text-neutral-100">loop</strong>. The cyan arrow pointing back is the secret: each loop carries what you learned and
+          makes the next draft better. A short cycle beats a perfect first try.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Iterate</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Deliver a “good enough” draft and improve it with feedback.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Tell AI what didn’t work and ask it to fix only that.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Treat mistakes as information, not failure.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Paralysis</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Rewriting the prompt 10 times before testing it once.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Wait for the perfect version before showing it to anyone.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Starting over from scratch with every adjustment instead of correcting.</span></li>
+</ul>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">Why learn</h3>
+<p class="text-neutral-300 mb-4" data-inema-block="m1-1-t5-p2">
+            Because AI makes short cycles cheap — generating the next version takes seconds. Those who work by
+            iterating take advantage of this; those who seek initial perfection throw that advantage away. A good result
+            <strong class="text-emerald-400">emerges from the cycles</strong>, not on the first try.
+          </p>
+</div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-3">Key concepts</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Draft &gt; perfection</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Short cycle</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Error = information</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Feedback leads to corrections</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center justify-start gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span>
+<span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Mark as read</span>
+<span class="inema-label-done">Read</span>
+</button>
+</div>
+</section>
+<!-- ===================== TOPICO 6 ===================== -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-6" id="topico-6">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">⚙️ Automate predictable tasks</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" type="button">
+<span aria-hidden="true">?</span><span>I have a question</span>
+</button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t6-p1">
+          Look at your week and mark what is <strong class="text-emerald-400">repetitive and predictable</strong>: the same report,
+          the same standard response, the same spreadsheet. That’s a candidate for automation. But there’s one part that
+          almost no one teaches: <strong class="text-neutral-100">knowing when NOT to use AI</strong>. If a task follows a
+          fixed rule, simple automation is cheaper, more reliable, and easier to audit than AI.
+        </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">What is</h3>
+<p class="text-neutral-300" data-inema-block="m1-1-t6-p0">
+            Two moves together: <strong class="text-neutral-100">identify what is repetitive and predictable</strong> to take off your plate, and <strong class="text-neutral-100">choose the right tool</strong> for each case—sometimes a simple rule, sometimes AI. Automating well is as much about knowing how to use AI as knowing when it’s overkill.
+          </p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">💡</span> Fixed rule vs. AI</h3>
+<p class="text-neutral-300 text-sm">One <strong class="text-neutral-100">“simple automation”</strong> is a sequence of fixed steps (e.g., “every Friday, get the spreadsheet, add up column C, and send it by email”). It doesn’t think, doesn’t make creative mistakes, and costs almost nothing. Use AI when the task has <strong class="text-neutral-100">ambiguity</strong> — free-form text, judgment, cases that vary. Deterministic task → rule. Ambiguous task → AI.</p>
+</div>
+<!-- Fluxo de decisao (visual) -->
+<div class="rounded-2xl border border-emerald-500/30 bg-dark-900/40 p-3 sm:p-4 mb-4 overflow-hidden">
+<svg aria-label="Decision flow: Does the task always follow the same rule? Yes: use simple automation; no: use AI with human review" class="w-full h-auto" role="img" viewbox="0 0 900 260">
+<defs>
+<filter height="180%" id="m11d-glow" width="180%" x="-40%" y="-40%">
+<fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge>
+</filter>
+<pattern height="32" id="m11d-grid" patternunits="userSpaceOnUse" width="32">
+<circle cx="1.3" cy="1.3" fill="#10b981" opacity="0.10" r="1.3"></circle>
+</pattern>
+<marker id="m11d-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#34d399"></path></marker>
+</defs>
+<rect fill="url(#m11d-grid)" height="260" width="900" x="0" y="0"></rect>
+<!-- pergunta -->
+<rect fill="#0e2018" height="64" rx="13" stroke="#34d399" stroke-width="2" width="220" x="60" y="98"></rect>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="14" font-weight="600" text-anchor="middle" x="170" y="126">The task continues</text>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="14" font-weight="600" text-anchor="middle" x="170" y="146">always the same rule?</text>
+<!-- SIM -->
+<path d="M280,118 C360,100 400,90 470,90" fill="none" marker-end="url(#m11d-ah)" opacity="0.7" stroke="#7bc96f" stroke-width="2"></path>
+<text fill="#7bc96f" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="375" y="84">yes</text>
+<rect fill="#1f2937" height="56" rx="12" stroke="#7bc96f" stroke-width="2" width="360" x="470" y="62"></rect>
+<text fill="#a7f3d0" font-family="Inter,sans-serif" font-size="14" font-weight="600" text-anchor="middle" x="650" y="86">Simple automation (fixed rule)</text>
+<text fill="#9ca3af" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="650" y="105">inexpensive · reliable · auditable</text>
+<!-- NAO -->
+<path d="M280,142 C360,160 400,170 470,170" fill="none" marker-end="url(#m11d-ah)" opacity="0.7" stroke="#e07a5f" stroke-width="2"></path>
+<text fill="#e07a5f" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="375" y="186">no (ambiguous)</text>
+<g filter="url(#m11d-glow)"><rect fill="#0e2018" height="56" rx="12" stroke="#34d399" stroke-width="2" width="360" x="470" y="146"></rect></g>
+<text fill="#34d399" font-family="Inter,sans-serif" font-size="14" font-weight="600" text-anchor="middle" x="650" y="170">AI + human review</text>
+<text fill="#9ca3af" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="650" y="189">open-ended text · judgment · varying cases</text>
+</svg>
+</div>
+<p class="text-sm text-neutral-400 mb-6 px-1">
+<strong class="text-emerald-400">How to read:</strong> before "throwing AI at the problem," ask whether the task always follows the same rule. If <strong class="text-neutral-100">yes</strong>, simple automation is cheaper. If the task is
+          <strong class="text-neutral-100">ambiguous</strong>, that’s where AI shines — always with human review.
+        </p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">📊</span> Why this matters (data)</h3>
+<p class="text-neutral-300 text-sm">Gartner predicts that <strong>40%+ of agentic AI projects will be canceled by 2027</strong> — because of rising costs and uncertain value (it’s a prediction, not an established fact). In practice: throwing AI at everything, including tasks a simple rule could handle, is expensive and risky. Choosing the right tool for each task is part of the job.</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">Why learn</h3>
+<p class="text-neutral-300 mb-4" data-inema-block="m1-1-t6-p2">
+            Because well-chosen automation gives you hours back in your week for the work that matters — and
+            <strong class="text-emerald-400">knowing when not to use AI</strong> avoids cost, risk, and fragility. Maturity with AI
+            means knowing when to use it and when it’s not worth it.
+          </p>
+</div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-3">Key concepts</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Predictable → rule</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Ambiguous → AI</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Lower cost, lower risk</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Saying no is also a skill</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center justify-start gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span>
+<span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Mark as read</span>
+<span class="inema-label-done">Read</span>
+</button>
+</div>
+</section>
+<!-- ===================== TOPICO 7 ===================== -->
+<section class="mb-16" data-inema-topic="modulo-1-1#topico-7" id="topico-7">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">7</span>
+<h2 class="text-2xl font-bold">🛡️ Build professional and financial security</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" type="button">
+<span aria-hidden="true">?</span><span>I have a question</span>
+</button>
+</div>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m1-1-t7-p1">
+          The previous six habits make you more productive. This one turns productivity into
+          <strong class="text-emerald-400">safety</strong>. The idea: use AI to build new sources of income around
+          a field you already know well, reducing your dependence on a single job. Productivity that stays
+          only with the company disappears if the job does; productivity that becomes your own asset does not.
+        </p>
+<div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">What is</h3>
+<p class="text-neutral-300" data-inema-block="m1-1-t7-p2">
+            Use AI's leverage to create <strong class="text-neutral-100">optionality</strong>: a side business, a digital
+            product, a small consulting practice, content that generates income. It’s not about "quitting everything"—it’s about building,
+            little by little, something that depends on you and not just on a single paycheck.
+          </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Build confidence</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Package what you know into a small service or product.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Use AI to do on your own what used to require a team.</span></li>
+<li class="flex items-start space-x-2"><span class="text-emerald-400">✓</span><span>Start small, alongside your job, and iterate.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Pitfalls</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Fall for “magical passive income with AI” (classic grift).</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Quitting your job before validating any income.</span></li>
+<li class="flex items-start space-x-2"><span class="text-red-400">✗</span><span>Building something in a subject you don’t truly know.</span></li>
+</ul>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-2">Why learn</h3>
+<p class="text-neutral-300 mb-4" data-inema-block="m1-1-t7-p3">
+            Because the market is changing: the WEF projects <strong class="text-emerald-400">+78 million net jobs</strong> by 2030, but with <strong class="text-neutral-100">22% of current jobs</strong> facing disruption, with ~39% of skills changing. In this landscape, having more than one leg to stand on isn’t a luxury—it’s prudence. AI has lowered the cost of building that second leg.
+          </p>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">📊</span> Why this matters (data)</h3>
+<p class="text-neutral-300 text-sm"><strong>+78M net jobs</strong> by 2030 (170M created, 92M displaced), <strong>22% of jobs</strong> in disruption and <strong>~39% of skills</strong> changing (WEF Future of Jobs 2025). Change creates opportunity for those who position themselves—and risk for those who depend on a single source.</p>
+</div>
+<h3 class="text-lg font-semibold text-emerald-400 mb-3">Key concepts</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Multiple income streams</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Proprietary asset</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Optionality</p></div>
+<div class="bg-dark-800 rounded-lg p-4 border border-dark-600 text-center"><p class="text-sm font-semibold text-neutral-100">Start small</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center justify-start gap-2 px-4 py-2 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span>
+<span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Mark as read</span>
+<span class="inema-label-done">Read</span>
+</button>
+</div>
+</section>
+<!-- ===================== RESUMO DO MODULO ===================== -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🏁</span> Module summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-neutral-100">AI is a craft, not magic</strong><span class="text-neutral-400"> - any field can use AI for its own tasks without becoming technical.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-neutral-100">Become the go-to person</strong><span class="text-neutral-400"> - solve real problems with AI before others do and make it visible.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-neutral-100">Human judgment, always</strong><span class="text-neutral-400"> - convincing ≠ correct; you review, adapt, and sign off.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-neutral-100">Context is the biggest lever</strong><span class="text-neutral-400"> - real data and examples &gt; “magic prompt”.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-neutral-100">Iteration &gt; perfection</strong><span class="text-neutral-400"> - short cycle: draft, test, correct, repeat.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-neutral-100">Automate with sound judgment</strong><span class="text-neutral-400"> - predictable → rules; ambiguous → AI. And know when to say no.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-emerald-400 mt-1">✓</span><div><strong class="text-neutral-100">Productivity becomes security</strong><span class="text-neutral-400"> - build income and optionality around what you know best.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-emerald-400 mb-2">Next step:</h3>
+<p class="text-neutral-300">Track 2 · <strong>Be irreplaceable</strong> — the human skills AI can’t replace. Using AI to amplify them is halfway there; together, they make up the complete skill set.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">
+              ← Back to Track 1
+            </a>
+<a class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors" href="../trilha2/index.html">
+              Track 2 · Become irreplaceable →
+            </a>
+</div>
+</div>
+</section>
+</main>
+</div>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>The Right Path to AI · real AI upskilling · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a> · 2026</p>
+</div>
+</footer>
+<!-- ===================== JS-NUCLEO v1 ===================== -->
+<script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const htmlEl = document.documentElement;
+    if (htmlEl.classList.contains('dark')) {
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      htmlEl.classList.toggle('dark');
+      const isDark = htmlEl.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      htmlEl.style.colorScheme = isDark ? 'dark' : 'light';
+      try {
+        if (window.INEMA && INEMA.setPref) INEMA.setPref('theme', isDark ? 'inema-dark' : 'claro');
+      } catch (e) {}
+    });
+  </script>
+<!-- ===================== BLOCO VERBATIM 3 — Init ===================== -->
+<script src="../../../assets/learn.js"></script>
+<script>
+    if (window.INEMA && typeof window.INEMA.init === 'function') {
+      window.INEMA.init();
+    }
+    // Checagem leve opcional do topico 4
+    window.addEventListener('DOMContentLoaded', function () {
+      if (window.INEMA && INEMA.registerCheck) {
+        INEMA.registerCheck('modulo-1-1#q1', {
+          answer: 1,
+          explain: {
+            0: 'Não existe "palavra mágica" — o que muda o resultado é o contexto que você fornece, não um truque secreto.',
+            1: 'Isso. Papel + dados reais + exemplo do seu jeito + formato de saída é exatamente engenharia de contexto.',
+            2: 'Tamanho não é qualidade. Despejar tudo sem estrutura confunde a IA; o que vale é contexto relevante e organizado.'
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

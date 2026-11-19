@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="caminho-certo-da-ia" name="inema-course"/>
+<title>Módulo 2.1 · Habilidades de mente | O Caminho Certo da IA</title>
+<!-- ===== MANIFESTO DO CURSO (erro #28) ===== -->
+<script data-inema-manifest="" type="application/json">
+{
+  "course": "caminho-certo-da-ia",
+  "courseTitle": "O Caminho Certo da IA",
+  "tracks": [
+    { "n": "1", "slug": "trilha1", "title": "Alavancar com IA", "color": "emerald",
+      "modules": [
+        { "id": "1-1", "slug": "modulo-1-1", "title": "Usar IA como ofício", "topics": 7, "href": "curso/trilha1/modulo-1-1.html" }
+      ] },
+    { "n": "2", "slug": "trilha2", "title": "Ser insubstituível", "color": "blue",
+      "modules": [
+        { "id": "2-1", "slug": "modulo-2-1", "title": "Habilidades de mente", "topics": 6, "href": "curso/trilha2/modulo-2-1.html" },
+        { "id": "2-2", "slug": "modulo-2-2", "title": "Habilidades de relação e caráter", "topics": 6, "href": "curso/trilha2/modulo-2-2.html" }
+      ] }
+  ]
+}
+  </script>
+<!-- ===== ANTI-FOUC (erro #18). REL=../.. ===== -->
+<script>
+  (function () {
+    try {
+      var html = document.documentElement;
+      var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+      function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+      var p = clone(DEF);
+      try {
+        var raw = localStorage.getItem('inema.prefs');
+        if (raw) { var parsed = JSON.parse(raw); if (parsed && typeof parsed === 'object') { for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k]; } }
+        else { var legacy = localStorage.getItem('theme'); if (legacy === 'light') p.theme = 'claro'; else if (legacy === 'dark') p.theme = 'inema-dark'; }
+      } catch (e) { p = clone(DEF); }
+      var THEMES = { 'inema-dark': { dark: true, attr: null, cs: 'dark' }, 'claro': { dark: false, attr: null, cs: 'light' }, 'sepia': { dark: false, attr: 'sepia', cs: 'light' }, 'foco': { dark: null, attr: 'foco', cs: null }, 'contraste': { dark: true, attr: 'contraste', cs: 'dark' } };
+      var t = THEMES[p.theme] || THEMES['inema-dark'];
+      if (t.dark === true) html.classList.add('dark'); else if (t.dark === false) html.classList.remove('dark');
+      if (t.attr) html.setAttribute('data-theme', t.attr); else html.removeAttribute('data-theme');
+      html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+      html.setAttribute('data-font', p.font || 'inter'); html.setAttribute('data-accent', p.accent || 'emerald');
+      var s = html.style; var scale = (+p.fontScale || 100);
+      s.setProperty('--inema-font-scale', (scale / 100).toString()); s.setProperty('font-size', scale + '%');
+      s.setProperty('--measure', (+p.lineWidth || 68) + 'ch'); s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+      var fam = p.font === 'system' ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' : (p.font === 'leitura' ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif' : '"Inter", system-ui, sans-serif');
+      s.setProperty('--font-body', fam);
+      var ACC = { emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66], amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60] };
+      var a = ACC[p.accent] || ACC.emerald;
+      s.setProperty('--accent-h', a[0] + ''); s.setProperty('--accent-s', a[1] + '%'); s.setProperty('--accent-l', a[2] + '%');
+      s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+    } catch (err) { try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {} }
+  })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../assets/learn.css" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+    section[id^="topico-"] { scroll-margin-top: 5rem; }
+    [data-inema-topic] { scroll-margin-top: 5rem; }
+
+    /* Light mode — base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    /* acento blue */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .bg-blue-900\/20 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:bg-blue-500\/30:hover { background-color: rgba(37, 99, 235, 0.18); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    /* emerald nav */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    /* gradientes + especiais */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.22); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .text-red-400 { color: #b91c1c; }
+    html:not(.dark) .bg-red-900\/20 { background-color: rgba(185, 28, 28, 0.08); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(185, 28, 28, 0.25); }
+    html:not(.dark) .bg-emerald-900\/20 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    /* nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+    /* bordas dark suaves */
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    /* SVG no tema claro */
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    /* mock "ilustrativo" */
+    .mock { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.25s} .wf-a:nth-child(3){animation-delay:.5s}
+    }
+    @media (prefers-reduced-motion: reduce) { .wf-a { animation: none !important; } }
+  </style>
+<link href="https://inematds.github.io/caminho-certo-da-ia/curso/trilha2/modulo-2-1.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/caminho-certo-da-ia/en/curso/trilha2/modulo-2-1.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/caminho-certo-da-ia/es/curso/trilha2/modulo-2-1.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="modulo-2-1.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">PT</a><a href="../../en/curso/trilha2/modulo-2-1.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="../../es/curso/trilha2/modulo-2-1.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<a class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg" href="#conteudo">Pular para o conteúdo</a>
+<!-- ===== NAV ===== -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-primary hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧭</span>
+<span class="font-bold text-lg hidden sm:inline">O Caminho Certo da IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html">
+<span class="sm:hidden">T1</span><span class="hidden sm:inline">Alavancar com IA</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10" href="index.html">
+<span class="sm:hidden">T2</span><span class="hidden sm:inline">Ser insubstituível</span>
+</a>
+<button class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors ml-1" data-inema-journey-open="" type="button">
+<span aria-hidden="true">◷</span><span>Minha jornada</span>
+<span aria-hidden="true" class="inema-journey-badge hidden"></span>
+</button>
+<button aria-label="Alternar tema claro/escuro" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- ===== BREADCRUMB ===== -->
+<nav aria-label="Trilha de navegação" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-blue-400" href="../../index.html">Início</a><span>/</span>
+<a class="hover:text-blue-400" href="index.html">Trilha 2</a><span>/</span>
+<span class="text-blue-400">Módulo 2.1</span>
+</div>
+</nav>
+<!-- ===== HEADER DO MÓDULO ===== -->
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600" data-inema-module="2-1" data-inema-track="2">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MÓDULO 2.1</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🧠 Habilidades de mente</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">As seis habilidades cognitivas que a IA não substitui: pensar criticamente, criar, conectar áreas, acumular repertório, ler dados com honestidade e decidir o que importa. A IA executa; estas habilidades decidem <em>o que</em> ela executa — e se a resposta presta.</p>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">6</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">~90</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Essencial</div><div class="text-xs text-neutral-400">Nível</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Mente</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+<!-- Barra de progresso do módulo (derivada) -->
+<div aria-label="Progresso do módulo 2.1" aria-valuemax="100" aria-valuemin="0" class="mt-6 max-w-2xl" data-inema-meter="modulo:2-1" role="progressbar">
+<div class="flex items-center justify-between text-sm mb-1">
+<span class="inema-meter-label text-neutral-400" data-inema-meter-frac="">0 de 6</span>
+<span class="text-blue-400 font-semibold" data-inema-meter-pct="">0%</span>
+</div>
+<div class="inema-bar h-2 rounded-full bg-dark-700 overflow-hidden"><div class="inema-bar__fill h-full rounded-full bg-blue-500" data-inema-meter-fill="" style="width:0%"></div></div>
+</div>
+</div>
+</header>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:grid lg:grid-cols-[220px_1fr] lg:gap-10">
+<!-- ===== TOC sticky ===== -->
+<nav aria-label="Índice da página" class="hidden lg:block sticky top-24 self-start" data-inema-toc="">
+<p class="text-sm text-neutral-400 mb-2">Seção <span class="inema-toc-pos" data-inema-section-counter="">1</span> de 6</p>
+<ul class="space-y-1 text-sm">
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-1">1. Pensamento crítico</a></li>
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-2">2. Criatividade</a></li>
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-3">3. Nexialismo</a></li>
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-4">4. Repertório</a></li>
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-5">5. Data literacy</a></li>
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-6">6. Definir o que fazer</a></li>
+</ul>
+</nav>
+<main class="min-w-0" id="conteudo">
+<!-- SVG de abertura: as 6 habilidades como filtro entre a IA e a decisão -->
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-10 overflow-hidden">
+<svg aria-label="A IA gera respostas em massa que passam por seis filtros mentais humanos — crítico, criativo, nexial, repertório, dados e prioridade — antes de virarem uma boa decisão" class="w-full h-auto" role="img" viewbox="0 0 1000 220">
+<defs>
+<lineargradient id="m21-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<filter height="180%" id="m21-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m21-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#3b82f6" opacity="0.12" r="1.3"></circle></pattern>
+<marker id="m21-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#60a5fa"></path></marker>
+<marker id="m21-ahc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<rect fill="url(#m21-grid)" height="220" width="1000" x="0" y="0"></rect>
+<!-- entrada: IA gera respostas -->
+<rect fill="#0e1b26" height="58" rx="13" stroke="#38bdf8" stroke-width="2" width="150" x="28" y="80"></rect>
+<text fill="#9ad6ff" font-family="Inter,sans-serif" font-size="14" font-weight="600" text-anchor="middle" x="103" y="105">IA gera</text>
+<text fill="#bfe6ff" font-family="Inter,sans-serif" font-size="11.5" text-anchor="middle" x="103" y="123">muitas respostas</text>
+<path d="M178,109 L236,109" fill="none" marker-end="url(#m21-ahc)" opacity="0.6" stroke="#38bdf8" stroke-width="1.8"></path>
+<!-- 6 filtros mentais (blue) -->
+<g font-family="Inter,sans-serif" font-size="12" font-weight="600">
+<g><rect fill="#0e1622" height="30" rx="8" stroke="#60a5fa" stroke-width="2" width="160" x="240" y="14"></rect><text fill="#93c5fd" text-anchor="middle" x="320" y="34">1 · crítico</text></g>
+<g><rect fill="#0e1622" height="30" rx="8" stroke="#60a5fa" stroke-width="2" width="160" x="240" y="50"></rect><text fill="#93c5fd" text-anchor="middle" x="320" y="70">2 · criativo</text></g>
+<g><rect fill="#0e1622" height="30" rx="8" stroke="#60a5fa" stroke-width="2" width="160" x="240" y="86"></rect><text fill="#93c5fd" text-anchor="middle" x="320" y="106">3 · nexial</text></g>
+<g><rect fill="#0e1622" height="30" rx="8" stroke="#60a5fa" stroke-width="2" width="160" x="240" y="122"></rect><text fill="#93c5fd" text-anchor="middle" x="320" y="142">4 · repertório</text></g>
+<g><rect fill="#0e1622" height="30" rx="8" stroke="#60a5fa" stroke-width="2" width="160" x="240" y="158"></rect><text fill="#93c5fd" text-anchor="middle" x="320" y="178">5 · dados</text></g>
+</g>
+<g><rect fill="#0e1622" height="30" rx="8" stroke="#60a5fa" stroke-width="2" width="160" x="440" y="86"></rect><text fill="#93c5fd" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="520" y="106">6 · prioridade</text></g>
+<g fill="none" opacity="0.45" stroke="#60a5fa" stroke-width="1.6">
+<path d="M400,29 C430,40 440,70 600,100"></path><path d="M400,65 C430,72 440,86 600,101"></path>
+<path d="M400,101 L600,101"></path><path d="M400,137 C430,130 440,116 600,102"></path><path d="M400,173 C430,160 440,120 600,103"></path>
+</g>
+<path d="M600,101 C660,101 680,101 720,101" fill="none" marker-end="url(#m21-ah)" opacity="0.6" stroke="#60a5fa" stroke-width="1.8"></path>
+<!-- saída: boa decisão (caixa-foco) -->
+<g filter="url(#m21-glow)"><rect fill="#0e1622" height="58" rx="14" stroke="url(#m21-grad)" stroke-width="2.5" width="160" x="722" y="72"></rect></g>
+<text fill="#60a5fa" font-family="Inter,sans-serif" font-size="15" font-weight="700" text-anchor="middle" x="802" y="97">Boa decisão</text>
+<text fill="#bfdbfe" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="802" y="116">humana</text>
+</svg>
+<p class="text-xs text-neutral-400 mt-2 px-1">Leia da esquerda: a IA gera muitas respostas (ciano). Elas só viram uma <strong class="text-blue-400">boa decisão</strong> depois de passar pelos seis filtros mentais deste módulo. Sem os filtros, você só copia a primeira resposta.</p>
+</div>
+<h2 class="text-2xl font-bold mb-8">Conteúdo detalhado</h2>
+<!-- ===================== TÓPICO 1 — PENSAMENTO CRÍTICO ===================== -->
+<section class="mb-16" data-inema-module="2-1" data-inema-topic="modulo-2-1#topico-1" data-inema-track="2" id="topico-1">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">🔍 Pensamento crítico</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button">
+<span aria-hidden="true">?</span><span>Tenho dúvida</span>
+</button>
+</div>
+<div class="inema-prose">
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t1-p1">Pensamento crítico é a capacidade de <strong class="text-blue-400">questionar uma informação antes de aceitá-la</strong>: separar o que é fato do que é opinião, exigir evidência e decidir com base nela — não no que soa convincente.</p>
+<div class="bg-dark-700/60 border border-dark-600 rounded-lg p-4 mb-6 text-sm">
+<p class="text-neutral-300"><strong class="text-blue-400">Novo aqui?</strong> Quando a IA "<strong>alucina</strong>", ela inventa um fato (um número, uma citação, um link) que <em>parece</em> verdadeiro mas não existe — e diz isso com a mesma confiança de uma resposta correta. Pensamento crítico é o que pega isso.</p>
+</div>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">O que é</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t1-p2">É um hábito de checagem: <em>de onde veio isso? quem ganha se eu acreditar? o que falta aqui?</em> Aplicado à IA, é não tratar a resposta como verdade só porque está bem escrita. O modelo gera texto que soa autoritativo mesmo quando está errado — a fluência não é prova de correção.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por que aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t1-p3">Quem não pensa criticamente vira <strong class="text-red-400">refém da resposta da máquina</strong>. Num campo que muda toda semana, a habilidade que mais protege você é a de duvidar bem — saber qual número confiar, qual fonte cobrar, qual conclusão recusar.</p>
+</div>
+<!-- TIP BOX lastro WEF -->
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por que isso importa (dado WEF)</h3>
+<p class="text-neutral-300 text-sm"><strong>Pensamento analítico é a habilidade central nº 1 do mundo:</strong> 69% das empresas a consideram essencial — a mais citada de todas no <em>Future of Jobs Report 2025</em> do WEF. Não é "soft skill" secundária; é a primeira da lista.</p>
+</div>
+<!-- Grid fazer/evitar -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">✓ Pensa criticamente quem</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span>Pede a fonte antes de repassar um número.</span></li>
+<li class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span>Distingue previsão de fato observado.</span></li>
+<li class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span>Procura o caveat que falta na manchete.</span></li>
+<li class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span>Revisa a resposta da IA contra o que já sabe.</span></li>
+</ul>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+<h4 class="font-bold text-red-400 mb-4">✗ Vira refém quem</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start gap-2"><span class="text-red-400">✗</span><span>Copia a primeira resposta porque "soou boa".</span></li>
+<li class="flex items-start gap-2"><span class="text-red-400">✗</span><span>Confunde confiança da IA com correção.</span></li>
+<li class="flex items-start gap-2"><span class="text-red-400">✗</span><span>Compartilha estatística sem checar a origem.</span></li>
+<li class="flex items-start gap-2"><span class="text-red-400">✗</span><span>Aceita a métrica que o vendedor escolheu.</span></li>
+</ul>
+</div>
+</div>
+<!-- Exemplo copy-run -->
+<div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">⌨️</span> Pratique agora (copie e cole na sua IA)</h3>
+<p class="text-sm text-neutral-400 mb-1"><strong class="text-neutral-300">Objetivo:</strong> transformar a IA em sua checadora crítica em vez de fonte cega.</p>
+<pre class="mock bg-dark-900 border border-dark-600 rounded-lg p-4 text-sm text-neutral-200 overflow-auto mb-3"><code>Aja como um revisor crítico. Sobre a afirmação abaixo:
+1) liste cada dado factual e diga se é verificável;
+2) marque o que é opinião ou previsão (não fato);
+3) aponte qual evidência falta para eu confiar;
+4) dê 2 perguntas que eu deveria fazer antes de aceitar.
+
+Afirmação: "&lt;cole aqui a afirmação que você quer checar&gt;"</code></pre>
+<p class="text-sm text-neutral-400"><strong class="text-neutral-300">Como verificar:</strong> a IA deve separar fatos de opiniões e admitir o que <em>não</em> dá para confirmar. Se ela só concordar com tudo, refaça pedindo o lado contrário.</p>
+</div>
+<!-- Conceitos-chave -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Fluência ≠ verdade</div><p class="text-xs text-neutral-400">Texto bem escrito não prova que está certo.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Alucinação</div><p class="text-xs text-neutral-400">A IA inventa fatos com confiança.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Caveat</div><p class="text-xs text-neutral-400">A ressalva que separa dado de fumaça.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">WEF #1 · 69%</div><p class="text-xs text-neutral-400">Pensamento analítico, a skill nº 1.</p></div>
+</div>
+<!-- Marcar lido -->
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como lido</span><span class="inema-label-done">Lido</span>
+</button>
+</div>
+</section>
+<!-- ===================== TÓPICO 2 — CRIATIVIDADE ===================== -->
+<section class="mb-16" data-inema-module="2-1" data-inema-topic="modulo-2-1#topico-2" data-inema-track="2" id="topico-2">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">💡 Criatividade</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button">
+<span aria-hidden="true">?</span><span>Tenho dúvida</span>
+</button>
+</div>
+<div class="inema-prose">
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t2-p1">Criatividade é <strong class="text-blue-400">combinar referências e imaginar possibilidades que ainda não existem</strong> — achar a saída diferente, não a média das saídas conhecidas.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">O que é</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t2-p2">A criatividade humana nasce de vivência, emoção e propósito. Ela tem dois movimentos: <strong>divergir</strong> (gerar muitas ideias, inclusive ruins) e <strong>convergir</strong> (escolher e refinar a que presta). A IA é excelente no primeiro movimento e fraca no segundo — ela não tem gosto próprio para saber qual ideia importa.</p>
+<div class="bg-dark-700/60 border border-dark-600 rounded-lg p-4 mb-6 text-sm">
+<p class="text-neutral-300"><strong class="text-blue-400">O que é "recombinar"?</strong> A IA aprende padrões do que já foi escrito e recombina esses padrões. É ótimo para variações e rascunhos. Mas o salto — o problema novo que ninguém tinha enxergado — vem de quem viveu o problema, não de quem só leu sobre ele.</p>
+</div>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por que aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t2-p3">Quando a IA gera mil rascunhos em segundos, o gargalo deixa de ser <em>produzir</em> e passa a ser <strong class="text-blue-400">escolher e originar</strong>. Sua criatividade é o que dirige a máquina para um lugar que vale a pena — e o que reconhece a faísca no meio do volume.</p>
+</div>
+<!-- SVG: divergir e convergir -->
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-6 overflow-hidden">
+<svg aria-label="A IA diverge gerando muitas ideias; a criatividade humana converge escolhendo e originando a ideia que importa" class="w-full h-auto" role="img" viewbox="0 0 1000 200">
+<defs>
+<lineargradient id="m21b-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<filter height="180%" id="m21b-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<marker id="m21b-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#60a5fa"></path></marker>
+<marker id="m21b-ahc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<text fill="#9ad6ff" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="120" y="24">IA diverge (volume)</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="820" y="24">humano converge (gosto)</text>
+<rect fill="#0e1b26" height="48" rx="12" stroke="#38bdf8" stroke-width="2" width="120" x="40" y="84"></rect>
+<text fill="#bfe6ff" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="100" y="113">tema</text>
+<g fill="none" opacity="0.5" stroke="#38bdf8" stroke-width="1.6">
+<path d="M160,100 C250,60 320,46 430,42" marker-end="url(#m21b-ahc)"></path>
+<path d="M160,104 C250,80 320,74 430,80" marker-end="url(#m21b-ahc)"></path>
+<path d="M160,108 L430,118" marker-end="url(#m21b-ahc)"></path>
+<path d="M160,112 C250,130 320,140 430,156" marker-end="url(#m21b-ahc)"></path>
+</g>
+<g font-family="Inter,sans-serif" font-size="11.5">
+<rect fill="#0e1b26" height="28" rx="8" stroke="#38bdf8" stroke-width="1.6" width="120" x="430" y="28"></rect><text fill="#bfe6ff" text-anchor="middle" x="490" y="46">ideia</text>
+<rect fill="#0e1b26" height="28" rx="8" stroke="#38bdf8" stroke-width="1.6" width="120" x="430" y="66"></rect><text fill="#bfe6ff" text-anchor="middle" x="490" y="84">ideia</text>
+<rect fill="#0e1b26" height="28" rx="8" stroke="#38bdf8" stroke-width="1.6" width="120" x="430" y="104"></rect><text fill="#bfe6ff" text-anchor="middle" x="490" y="122">ideia</text>
+<rect fill="#0e1b26" height="28" rx="8" stroke="#38bdf8" stroke-width="1.6" width="120" x="430" y="142"></rect><text fill="#bfe6ff" text-anchor="middle" x="490" y="160">ideia</text>
+</g>
+<g fill="none" opacity="0.55" stroke="#60a5fa" stroke-width="1.8">
+<path d="M550,42 C640,70 680,96 760,104"></path><path d="M550,80 C640,92 680,100 760,106"></path>
+<path d="M550,118 C640,112 680,108 760,108" marker-end="url(#m21b-ah)"></path><path d="M550,156 C640,140 680,120 760,110"></path>
+</g>
+<g filter="url(#m21b-glow)"><rect fill="#0e1622" height="52" rx="14" stroke="url(#m21b-grad)" stroke-width="2.5" width="160" x="762" y="80"></rect></g>
+<text fill="#60a5fa" font-family="Inter,sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="842" y="103">a ideia certa</text>
+<text fill="#bfdbfe" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="842" y="121">+ você origina</text>
+</svg>
+<p class="text-xs text-neutral-400 mt-2 px-1">A máquina é boa em <strong class="text-blue-400">divergir</strong> (gerar muitas opções, em ciano). O trabalho humano é <strong class="text-blue-400">convergir</strong>: reconhecer a ideia que vale e originar o que faltava.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por que isso importa (dado WEF)</h3>
+<p class="text-neutral-300 text-sm"><strong>Pensamento criativo é a 4ª habilidade central</strong> do <em>Future of Jobs 2025</em>: 57% das empresas o consideram essencial. Num mundo onde produzir ficou barato, criar valor está cada vez mais ligado a originar — não a repetir.</p>
+</div>
+<div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">⌨️</span> Pratique agora</h3>
+<p class="text-sm text-neutral-400 mb-1"><strong class="text-neutral-300">Objetivo:</strong> usar a IA para divergir e você para convergir.</p>
+<pre class="mock bg-dark-900 border border-dark-600 rounded-lg p-4 text-sm text-neutral-200 overflow-auto mb-3"><code>Gere 12 ângulos bem diferentes para resolver o problema abaixo.
+Inclua pelo menos 3 ideias estranhas/improváveis.
+NÃO escolha a melhor — só liste. Eu escolho.
+
+Problema: "&lt;descreva o seu problema real aqui&gt;"</code></pre>
+<p class="text-sm text-neutral-400"><strong class="text-neutral-300">Como verificar:</strong> você deve sair com 2-3 ângulos que não tinha pensado. O passo criativo é seu: escolher um e desenvolvê-lo com a sua vivência.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Divergir</div><p class="text-xs text-neutral-400">Gerar muitas opções (a IA ajuda).</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Convergir</div><p class="text-xs text-neutral-400">Escolher e refinar (você decide).</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Originar</div><p class="text-xs text-neutral-400">O salto que vem da vivência.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">WEF #4 · 57%</div><p class="text-xs text-neutral-400">Pensamento criativo.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como lido</span><span class="inema-label-done">Lido</span>
+</button>
+</div>
+</section>
+<!-- ===================== TÓPICO 3 — NEXIALISMO ===================== -->
+<section class="mb-16" data-inema-module="2-1" data-inema-topic="modulo-2-1#topico-3" data-inema-track="2" id="topico-3">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🕸️ Nexialismo</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button">
+<span aria-hidden="true">?</span><span>Tenho dúvida</span>
+</button>
+</div>
+<div class="inema-prose">
+<div class="bg-dark-700/60 border border-dark-600 rounded-lg p-4 mb-6 text-sm">
+<p class="text-neutral-300"><strong class="text-blue-400">Nexialismo?</strong> É a arte de <strong>conectar áreas que parecem separadas</strong> — tecnologia + comportamento + economia + cultura. O nexialista não é o maior especialista em nenhuma delas; é quem enxerga a relação entre elas.</p>
+</div>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">O que é</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t3-p1">A IA é excelente em respostas <em>verticais</em>: profundas dentro de uma área bem definida. O ser humano com visão ampla faz o movimento <em>horizontal</em>: liga um achado de psicologia a uma decisão de produto, um dado de economia a uma escolha de carreira. Isso depende de <strong class="text-blue-400">conhecimento tácito</strong> — o que você sabe mas não consegue escrever num prompt.</p>
+<div class="bg-dark-700/60 border border-dark-600 rounded-lg p-4 mb-6 text-sm">
+<p class="text-neutral-300"><strong class="text-blue-400">Conhecimento tácito</strong> é o saber que mora na experiência e não cabe num manual: o "feeling" de que algo vai dar errado, o jeito de ler uma sala. É justamente o que a IA não tem — e o que pesquisadores de Princeton apontam como o limite das previsões de obsolescência.</p>
+</div>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por que aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t3-p2">Quem só sabe perguntar dentro da própria caixa recebe respostas da própria caixa. Quem conecta áreas faz <strong class="text-blue-400">perguntas que a IA nunca proporia sozinha</strong> — e é aí que mora a vantagem que não se automatiza.</p>
+</div>
+<!-- SVG aninhamento/conexão -->
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-6 overflow-hidden">
+<svg aria-label="Quatro áreas distintas — tecnologia, comportamento, economia, cultura — conectadas entre si por linhas, formando uma visão integrada que a IA não monta sozinha" class="w-full h-auto" role="img" viewbox="0 0 1000 220">
+<defs>
+<filter height="180%" id="m21c-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<lineargradient id="m21c-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+</defs>
+<!-- nós (ciano) -->
+<g font-family="Inter,sans-serif" font-size="13" font-weight="600">
+<circle cx="200" cy="60" fill="#0e1b26" r="44" stroke="#38bdf8" stroke-width="2"></circle><text fill="#bfe6ff" text-anchor="middle" x="200" y="64">tecnologia</text>
+<circle cx="800" cy="60" fill="#0e1b26" r="44" stroke="#38bdf8" stroke-width="2"></circle><text fill="#bfe6ff" text-anchor="middle" x="800" y="64">economia</text>
+<circle cx="200" cy="168" fill="#0e1b26" r="44" stroke="#38bdf8" stroke-width="2"></circle><text fill="#bfe6ff" text-anchor="middle" x="200" y="172">comportamento</text>
+<circle cx="800" cy="168" fill="#0e1b26" r="44" stroke="#38bdf8" stroke-width="2"></circle><text fill="#bfe6ff" text-anchor="middle" x="800" y="172">cultura</text>
+</g>
+<!-- todas as conexões -->
+<g fill="none" opacity="0.5" stroke="#60a5fa" stroke-width="1.8">
+<path d="M244,60 L756,60"></path><path d="M200,104 L200,124"></path><path d="M800,104 L800,124"></path>
+<path d="M244,168 L756,168"></path><path d="M238,92 L762,136"></path><path d="M762,92 L238,136"></path>
+</g>
+<!-- centro: visão integrada (foco) -->
+<g filter="url(#m21c-glow)"><circle cx="500" cy="114" fill="#0e1622" r="56" stroke="url(#m21c-grad)" stroke-width="2.5"></circle></g>
+<text fill="#60a5fa" font-family="Inter,sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="500" y="110">visão que</text>
+<text fill="#bfdbfe" font-family="Inter,sans-serif" font-size="12" text-anchor="middle" x="500" y="128">conecta tudo</text>
+</svg>
+<p class="text-xs text-neutral-400 mt-2 px-1">A IA é forte <em>dentro</em> de cada círculo. O nexialista vive no <strong class="text-blue-400">centro</strong>: vê as ligações entre tecnologia, comportamento, economia e cultura — e é daí que saem as perguntas que importam.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por que isso importa (dado Princeton)</h3>
+<p class="text-neutral-300 text-sm"><strong>O limite da IA é o conhecimento tácito e contextual.</strong> Narayanan e Mitchell (Princeton) mostram que previsões de "a IA vai substituir o emprego X" costumam vir de um entendimento raso do trabalho. Exemplo real: em 2016 previram radiologistas obsoletos; uma década depois há escassez e salários altos.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Vertical vs. horizontal</div><p class="text-xs text-neutral-400">A IA aprofunda; você conecta.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Conhecimento tácito</div><p class="text-xs text-neutral-400">O saber que não cabe num prompt.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Julgamento de domínio</div><p class="text-xs text-neutral-400">Quem conhece o trabalho vê os limites.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Perguntas novas</div><p class="text-xs text-neutral-400">O que a IA não proporia sozinha.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como lido</span><span class="inema-label-done">Lido</span>
+</button>
+</div>
+</section>
+<!-- ===================== TÓPICO 4 — REPERTÓRIO ===================== -->
+<section class="mb-16" data-inema-module="2-1" data-inema-topic="modulo-2-1#topico-4" data-inema-track="2" id="topico-4">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">📚 Repertório</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button">
+<span aria-hidden="true">?</span><span>Tenho dúvida</span>
+</button>
+</div>
+<div class="inema-prose">
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t4-p1">Repertório é <strong class="text-blue-400">o acervo de vivências, leituras e exemplos</strong> que você carrega — e que sustenta tanto boas perguntas quanto bom julgamento das respostas.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">O que é</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t4-p2">É a sua biblioteca interna: casos que você viu, padrões que reconhece, analogias que tem à mão. Repertório é o que faz você notar que "isso aqui parece aquele caso de 2019" — uma conexão que a IA só faz se você a alimentar com o contexto certo.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por que aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t4-p3">Há um laço direto com o eixo 1 (Alavancar com IA): <strong class="text-blue-400">repertório alimenta o prompt</strong>. Quem tem pouco repertório faz perguntas genéricas e recebe respostas genéricas — e, pior, não consegue avaliar se a resposta presta. Quem tem repertório guia a IA e corrige o rumo.</p>
+</div>
+<!-- Timeline de como construir repertório -->
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Ler fora da própria área</h4>
+<p class="text-neutral-300 text-sm">A maior parte das ideias úteis vem de um campo vizinho. Quem só lê o próprio nicho fica com o repertório de todo mundo do nicho — ou seja, sem vantagem.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Anotar exemplos e padrões</h4>
+<p class="text-neutral-300 text-sm">Repertório que não vira nota se perde. Guarde casos, frases e contraexemplos — eles voltam quando você menos espera, inclusive como contexto para a IA.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Curar fontes, não só consumir</h4>
+<p class="text-neutral-300 text-sm">Escolher <em>de quem</em> aprender é metade do repertório. Poucas fontes excelentes valem mais que muitos feeds rasos.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por que isso importa (dado Princeton/MIT)</h3>
+<p class="text-neutral-300 text-sm"><strong>Repertório é a base do julgamento de domínio.</strong> A pesquisa de Princeton mostra que quem domina o próprio campo entende os limites da IA melhor que o entusiasta de fora. E o MIT aponta que a falha nº 1 ao avaliar IA é não ter referência para questionar o resultado — exatamente o que o repertório fornece.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Biblioteca interna</div><p class="text-xs text-neutral-400">Casos e padrões à mão.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Alimenta o prompt</div><p class="text-xs text-neutral-400">Contexto melhor → resposta melhor.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Curadoria</div><p class="text-xs text-neutral-400">Escolher de quem aprender.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Avalia a resposta</div><p class="text-xs text-neutral-400">Saber se a IA acertou.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como lido</span><span class="inema-label-done">Lido</span>
+</button>
+</div>
+</section>
+<!-- ===================== TÓPICO 5 — DATA LITERACY ===================== -->
+<section class="mb-16" data-inema-module="2-1" data-inema-topic="modulo-2-1#topico-5" data-inema-track="2" id="topico-5">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">📊 Data literacy</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button">
+<span aria-hidden="true">?</span><span>Tenho dúvida</span>
+</button>
+</div>
+<div class="inema-prose">
+<div class="bg-dark-700/60 border border-dark-600 rounded-lg p-4 mb-6 text-sm">
+<p class="text-neutral-300"><strong class="text-blue-400">Data literacy</strong> = alfabetização em dados. <strong>Não</strong> é ser cientista de dados. É saber ler um número, perguntar de onde veio e não cair em gráfico bonito. <strong class="text-blue-400">"Ground truth"</strong> é o gabarito real — a verdade contra a qual se compara um resultado.</p>
+</div>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">O que é</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t5-p1">É ler, interpretar e questionar dados para decidir melhor. Inclui reconhecer a <strong>métrica de vaidade</strong> (número que impressiona mas não diz nada útil), o recorte enviesado e a confusão entre correlação e causa. Com IA, vira ainda mais crítico: a máquina apresenta números com a mesma confiança, certos ou errados.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por que aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t5-p2">A falha de avaliação nº 1, segundo o MIT, é <strong class="text-red-400">confiar na métrica do material de venda do fornecedor</strong> em vez de interrogar a ground truth. A pergunta que protege você ao avaliar qualquer IA é simples: <em>"o gabarito é mesmo verdadeiro?"</em></p>
+</div>
+<!-- Mock "ilustrativo" de painel de métricas (HTML, não SVG) -->
+<div class="bg-dark-800 border border-dark-600 rounded-xl overflow-hidden mb-6">
+<div class="flex items-center gap-2 px-4 py-2 bg-dark-700 border-b border-dark-600">
+<span class="w-3 h-3 rounded-full bg-red-400/70"></span><span class="w-3 h-3 rounded-full bg-yellow-400/70"></span><span class="w-3 h-3 rounded-full bg-emerald-400/70"></span>
+<span class="text-xs text-neutral-400 ml-2 mock">painel-do-fornecedor · recriação ilustrativa</span>
+</div>
+<div class="p-5 mock text-sm">
+<div class="flex items-center justify-between mb-3"><span class="text-neutral-400">"Acurácia anunciada"</span><span class="text-emerald-400 font-bold">98,7%</span></div>
+<div class="h-2 rounded bg-dark-700 overflow-hidden mb-4"><div class="h-full bg-emerald-500" style="width:98%"></div></div>
+<div class="flex items-center justify-between mb-3"><span class="text-blue-400">↳ pergunte: medida contra qual gabarito?</span><span class="text-neutral-500">ground truth = ?</span></div>
+<div class="flex items-center justify-between mb-3"><span class="text-blue-400">↳ pergunte: amostra de quê e de quem?</span><span class="text-neutral-500">n = ?</span></div>
+<div class="flex items-center justify-between"><span class="text-blue-400">↳ pergunte: quem ganha se eu acreditar?</span><span class="text-neutral-500">conflito = ?</span></div>
+</div>
+</div>
+<p class="text-xs text-neutral-400 mb-6 px-1">Painel ilustrativo (não é screenshot real). O "98,7%" é a métrica de vaidade do vendedor. As três perguntas em azul são a data literacy em ação — elas atacam a <strong class="text-blue-400">ground truth</strong>, não o número de vitrine.</p>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por que isso importa (dado WEF + MIT)</h3>
+<p class="text-neutral-300 text-sm"><strong>Alfabetização tecnológica é a 6ª habilidade central do WEF</strong> (51% das empresas). E o MIT Sloan aponta a pergunta nº 1 ao avaliar qualquer ferramenta de IA: <em>"o gabarito (ground truth) é mesmo verdadeiro?"</em> — o caveat que separa qualificação de hype.</p>
+</div>
+<div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-6">
+<h3 class="text-lg font-semibold text-blue-400 mb-3 flex items-center"><span class="mr-2">⌨️</span> Pratique agora</h3>
+<p class="text-sm text-neutral-400 mb-1"><strong class="text-neutral-300">Objetivo:</strong> auditar um número antes de confiar nele.</p>
+<pre class="mock bg-dark-900 border border-dark-600 rounded-lg p-4 text-sm text-neutral-200 overflow-auto mb-3"><code>Vou te dar uma estatística. Aja como auditor de dados:
+1) qual seria a "ground truth" (gabarito) por trás desse número?
+2) que amostra/recorte ela exigiria para ser confiável?
+3) é correlação ou causa?
+4) que métrica de vaidade pode estar escondida aqui?
+
+Estatística: "&lt;cole o número/afirmação aqui&gt;"</code></pre>
+<p class="text-sm text-neutral-400"><strong class="text-neutral-300">Como verificar:</strong> a boa resposta aponta o que falta para confiar — não valida o número às cegas.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Ground truth</div><p class="text-xs text-neutral-400">O gabarito real por trás da métrica.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Métrica de vaidade</div><p class="text-xs text-neutral-400">Número que impressiona mas não serve.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Correlação ≠ causa</div><p class="text-xs text-neutral-400">Andar junto não é causar.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">WEF #6 · 51%</div><p class="text-xs text-neutral-400">Alfabetização tecnológica.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como lido</span><span class="inema-label-done">Lido</span>
+</button>
+</div>
+</section>
+<!-- ===================== TÓPICO 6 — DEFINIR O QUE FAZER ===================== -->
+<section class="mb-16" data-inema-module="2-1" data-inema-topic="modulo-2-1#topico-6" data-inema-track="2" id="topico-6">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">🎯 Definir o que fazer</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar dúvida neste tópico" type="button">
+<span aria-hidden="true">?</span><span>Tenho dúvida</span>
+</button>
+</div>
+<div class="inema-prose">
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t6-p1">A IA ajuda a <em>executar</em>, mas alguém precisa decidir <strong class="text-blue-400">o que deve ser feito e qual problema importa</strong>. Executar ficou fácil; decidir certo ficou mais valioso.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">O que é</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t6-p2">É a habilidade de priorização: escolher, entre tudo que <em>poderia</em> ser feito, o que vale a pena. Inclui pensar em custo de oportunidade (o que você deixa de fazer ao escolher isto) e separar o que é urgente do que é importante. A máquina otimiza a tarefa que você dá; ela não escolhe a tarefa certa por você.</p>
+<div class="bg-dark-700/60 border border-dark-600 rounded-lg p-4 mb-6 text-sm">
+<p class="text-neutral-300"><strong class="text-blue-400">A ilusão METR.</strong> Num experimento controlado (RCT), 16 desenvolvedores experientes usando IA nos próprios projetos ficaram <strong class="text-red-400">19% mais lentos</strong> — e, mesmo depois de medido, ainda <em>achavam</em> que tinham acelerado 20%. Velocidade percebida engana. O que protege é decidir o que importa e <strong>medir o resultado real</strong>, não a sensação.</p>
+</div>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por que aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-1-t6-p3">Se executar virou commodity, o valor migra para quem <strong class="text-blue-400">define o problema e mede o resultado</strong>. Acelerar a coisa errada é só chegar mais rápido a um lugar que não importava.</p>
+</div>
+<!-- SVG fluxo de decisão: executar mais rápido x decidir o quê -->
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-6 overflow-hidden">
+<svg aria-label="A pergunta isto importa? bifurca em dois caminhos: se não, acelerar a tarefa errada leva a desperdício rápido; se sim, definir e medir leva a impacto real" class="w-full h-auto" role="img" viewbox="0 0 1000 200">
+<defs>
+<filter height="180%" id="m21d-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<lineargradient id="m21d-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<marker id="m21d-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#60a5fa"></path></marker>
+</defs>
+<!-- diamante-pergunta -->
+<g><path d="M150,100 L240,60 L330,100 L240,140 Z" fill="#0e1622" stroke="#60a5fa" stroke-width="2"></path></g>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="240" y="96">isto</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="240" y="113">importa?</text>
+<!-- ramo NÃO -->
+<path d="M330,82 C420,60 470,52 560,52" fill="none" marker-end="url(#m21d-ah)" opacity="0.8" stroke="#e07a5f" stroke-width="1.8"></path>
+<text fill="#e07a5f" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="430" y="42">não</text>
+<rect fill="#2a0f16" height="42" rx="11" stroke="#e07a5f" stroke-width="2" width="200" x="562" y="32"></rect>
+<text fill="#f0a18d" font-family="Inter,sans-serif" font-size="12.5" font-weight="600" text-anchor="middle" x="662" y="58">acelerar a tarefa errada</text>
+<text fill="#e07a5f" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="start" x="800" y="58">→ rápido p/ nada</text>
+<!-- ramo SIM -->
+<path d="M330,118 C420,140 470,148 560,148" fill="none" marker-end="url(#m21d-ah)" opacity="0.7" stroke="#60a5fa" stroke-width="1.8"></path>
+<text fill="#60a5fa" font-family="Inter,sans-serif" font-size="12" font-weight="600" text-anchor="middle" x="430" y="160">sim</text>
+<g filter="url(#m21d-glow)"><rect fill="#0e1622" height="44" rx="12" stroke="url(#m21d-grad)" stroke-width="2.5" width="200" x="562" y="126"></rect></g>
+<text fill="#60a5fa" font-family="Inter,sans-serif" font-size="12.5" font-weight="700" text-anchor="middle" x="662" y="153">definir + medir o real</text>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="start" x="800" y="153">→ impacto</text>
+</svg>
+<p class="text-xs text-neutral-400 mt-2 px-1">A bifurcação que define tudo: antes de pedir velocidade à IA, pergunte <strong class="text-blue-400">"isto importa?"</strong>. O ramo vermelho (acelerar o que não importa) é a armadilha da ilusão METR; o ramo azul é definir o problema certo e medir o resultado real.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por que isso importa (dado METR)</h3>
+<p class="text-neutral-300 text-sm"><strong>A ilusão de produtividade é o achado mais importante da pesquisa.</strong> O RCT da METR (2025, reafirmado em 2026) mostra que ganho de IA depende de <em>habilidade + maturidade da tarefa</em>, não da ferramenta. Saber <strong>o quê</strong> fazer e medir o resultado real vale mais que velocidade percebida.</p>
+</div>
+<!-- Checagem leve opcional -->
+<div class="inema-check mt-8 bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6" data-inema-check="modulo-2-1#q1">
+<p class="font-medium mb-4">Auto-checagem (opcional): segundo a ilusão METR, o que mais protege seu resultado com IA?</p>
+<div class="inema-check-options space-y-2">
+<button class="block w-full text-left px-4 py-2 rounded-lg bg-dark-700 border border-dark-600 hover:bg-dark-600 transition-colors text-sm" data-inema-check-option="0" type="button">A) Confiar na sensação de que acelerou</button>
+<button class="block w-full text-left px-4 py-2 rounded-lg bg-dark-700 border border-dark-600 hover:bg-dark-600 transition-colors text-sm" data-inema-check-option="1" type="button">B) Definir o que importa e medir o resultado real</button>
+<button class="block w-full text-left px-4 py-2 rounded-lg bg-dark-700 border border-dark-600 hover:bg-dark-600 transition-colors text-sm" data-inema-check-option="2" type="button">C) Usar a IA no máximo de tarefas possível</button>
+</div>
+<div aria-live="polite" class="mt-4 text-sm" data-inema-check-feedback="" role="status"></div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Executar ≠ decidir</div><p class="text-xs text-neutral-400">A IA executa; você escolhe o quê.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Ilusão METR</div><p class="text-xs text-neutral-400">Velocidade percebida engana (−19%).</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Custo de oportunidade</div><p class="text-xs text-neutral-400">O que você deixa de fazer.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Medir o real</div><p class="text-xs text-neutral-400">Resultado, não sensação.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como lido</span><span class="inema-label-done">Lido</span>
+</button>
+</div>
+</section>
+<!-- ===== RESUMO DO MÓDULO ===== -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🧠</span> Resumo do módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Pensamento crítico</strong><span class="text-neutral-400"> — fluência não é verdade; duvide bem (WEF #1, 69%).</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Criatividade</strong><span class="text-neutral-400"> — a IA diverge; você converge e origina (WEF #4, 57%).</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Nexialismo</strong><span class="text-neutral-400"> — conectar áreas via conhecimento tácito (Princeton).</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Repertório</strong><span class="text-neutral-400"> — alimenta o prompt e avalia a resposta.</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Data literacy</strong><span class="text-neutral-400"> — interrogue a ground truth (WEF #6, 51% + MIT).</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Definir o que fazer</strong><span class="text-neutral-400"> — decidir e medir o real vence a ilusão METR.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-blue-400 mb-2">Próximo módulo:</h3>
+<p class="text-neutral-300">2.2 — Habilidades de relação e caráter (empatia, conexão, propósito, incerteza, aprender a aprender e coragem ética)</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="index.html">← Voltar para a Trilha</a>
+<a class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors" href="modulo-2-2.html">Próximo módulo →</a>
+</div>
+</div>
+</section>
+</main>
+</div>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>O Caminho Certo da IA · Módulo 2.1 — Habilidades de mente · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a></p>
+</div>
+</footer>
+<!-- ===== JS-NÚCLEO v1 ===== -->
+<script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      if (!topicItem) return;
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => { if (exp !== explanation) exp.classList.remove('active'); });
+      explanation.classList.toggle('active');
+    }
+    function openModal(modalId) { const m = document.getElementById(modalId); if (m) { m.classList.remove('hidden'); document.body.style.overflow = 'hidden'; } }
+    function closeModal() { document.querySelectorAll('.modal').forEach(m => m.classList.add('hidden')); document.body.style.overflow = 'auto'; }
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    (function () {
+      const themeToggle = document.getElementById('theme-toggle');
+      const darkIcon = document.getElementById('theme-toggle-dark-icon');
+      const lightIcon = document.getElementById('theme-toggle-light-icon');
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) lightIcon.classList.remove('hidden'); else darkIcon.classList.remove('hidden');
+      themeToggle.addEventListener('click', () => {
+        darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+        html.classList.toggle('dark');
+        const isDark = html.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        try { if (window.INEMA && INEMA.setPref) INEMA.setPref('theme', isDark ? 'inema-dark' : 'claro'); } catch (e) {}
+      });
+    })();
+  </script>
+<!-- ===== INIT (camada de aprendizagem). REL=../.. ===== -->
+<script src="../../assets/learn.js"></script>
+<script>
+    if (window.INEMA && typeof window.INEMA.init === 'function') { window.INEMA.init(); }
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.INEMA && INEMA.registerCheck) {
+        INEMA.registerCheck('modulo-2-1#q1', {
+          answer: 1,
+          explain: {
+            0: 'A sensação engana — foi exatamente o que a ilusão METR mostrou (acharam +20%, mas ficaram −19%).',
+            1: 'Isso. Definir o que importa e medir o resultado real é o que protege contra a velocidade percebida.',
+            2: 'Mais uso não é melhor: a IA pode atrapalhar em tarefa complexa/expert. O que vale é decidir e medir.'
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

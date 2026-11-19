@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="caminho-certo-da-ia" name="inema-course"/>
+<title>Módulo 2.2 · Habilidades de relación y carácter | El Camino Correcto de la IA</title>
+<!-- ===== MANIFESTO DO CURSO (erro #28) ===== -->
+<script data-inema-manifest="" type="application/json">
+{
+  "course": "caminho-certo-da-ia",
+  "courseTitle": "O Caminho Certo da IA",
+  "tracks": [
+    { "n": "1", "slug": "trilha1", "title": "Alavancar com IA", "color": "emerald",
+      "modules": [
+        { "id": "1-1", "slug": "modulo-1-1", "title": "Usar IA como ofício", "topics": 7, "href": "curso/trilha1/modulo-1-1.html" }
+      ] },
+    { "n": "2", "slug": "trilha2", "title": "Ser insubstituível", "color": "blue",
+      "modules": [
+        { "id": "2-1", "slug": "modulo-2-1", "title": "Habilidades de mente", "topics": 6, "href": "curso/trilha2/modulo-2-1.html" },
+        { "id": "2-2", "slug": "modulo-2-2", "title": "Habilidades de relação e caráter", "topics": 6, "href": "curso/trilha2/modulo-2-2.html" }
+      ] }
+  ]
+}
+  </script>
+<!-- ===== ANTI-FOUC (erro #18). REL=../.. ===== -->
+<script>
+  (function () {
+    try {
+      var html = document.documentElement;
+      var DEF = { theme: 'inema-dark', font: 'inter', fontScale: 100, lineWidth: 68, leading: 1.7, accent: 'emerald' };
+      function clone(o) { var r = {}; for (var x in o) r[x] = o[x]; return r; }
+      var p = clone(DEF);
+      try {
+        var raw = localStorage.getItem('inema.prefs');
+        if (raw) { var parsed = JSON.parse(raw); if (parsed && typeof parsed === 'object') { for (var k in DEF) if (parsed[k] != null) p[k] = parsed[k]; } }
+        else { var legacy = localStorage.getItem('theme'); if (legacy === 'light') p.theme = 'claro'; else if (legacy === 'dark') p.theme = 'inema-dark'; }
+      } catch (e) { p = clone(DEF); }
+      var THEMES = { 'inema-dark': { dark: true, attr: null, cs: 'dark' }, 'claro': { dark: false, attr: null, cs: 'light' }, 'sepia': { dark: false, attr: 'sepia', cs: 'light' }, 'foco': { dark: null, attr: 'foco', cs: null }, 'contraste': { dark: true, attr: 'contraste', cs: 'dark' } };
+      var t = THEMES[p.theme] || THEMES['inema-dark'];
+      if (t.dark === true) html.classList.add('dark'); else if (t.dark === false) html.classList.remove('dark');
+      if (t.attr) html.setAttribute('data-theme', t.attr); else html.removeAttribute('data-theme');
+      html.style.colorScheme = (t.cs ? t.cs : (html.classList.contains('dark') ? 'dark' : 'light'));
+      html.setAttribute('data-font', p.font || 'inter'); html.setAttribute('data-accent', p.accent || 'emerald');
+      var s = html.style; var scale = (+p.fontScale || 100);
+      s.setProperty('--inema-font-scale', (scale / 100).toString()); s.setProperty('font-size', scale + '%');
+      s.setProperty('--measure', (+p.lineWidth || 68) + 'ch'); s.setProperty('--lh-body', (+p.leading || 1.7).toString());
+      var fam = p.font === 'system' ? 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' : (p.font === 'leitura' ? '"Atkinson Hyperlegible", "Inter", system-ui, sans-serif' : '"Inter", system-ui, sans-serif');
+      s.setProperty('--font-body', fam);
+      var ACC = { emerald: [152, 76, 45], blue: [217, 91, 60], purple: [258, 90, 66], amber: [38, 92, 50], teal: [174, 72, 41], rose: [350, 89, 60] };
+      var a = ACC[p.accent] || ACC.emerald;
+      s.setProperty('--accent-h', a[0] + ''); s.setProperty('--accent-s', a[1] + '%'); s.setProperty('--accent-l', a[2] + '%');
+      s.setProperty('--accent', 'hsl(' + a[0] + ' ' + a[1] + '% ' + a[2] + '%)');
+    } catch (err) { try { document.documentElement.classList.add('dark'); document.documentElement.style.colorScheme = 'dark'; } catch (e) {} }
+  })();
+  </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="../../../assets/learn.css" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+    section[id^="topico-"] { scroll-margin-top: 5rem; }
+    [data-inema-topic] { scroll-margin-top: 5rem; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .bg-blue-900\/20 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:bg-blue-500\/30:hover { background-color: rgba(37, 99, 235, 0.18); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .bg-emerald-900\/20 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/30 { border-color: rgba(161, 98, 7, 0.22); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .text-red-400 { color: #b91c1c; }
+    html:not(.dark) .bg-red-900\/20 { background-color: rgba(185, 28, 28, 0.08); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(185, 28, 28, 0.25); }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+    .dark .border-dark-600 { border-color: #374151; }
+    .dark .divide-dark-600 > :not([hidden]) ~ :not([hidden]) { border-color: #374151; }
+    html:not(.dark) svg[role="img"] { filter: saturate(0.82) brightness(0.96); }
+    .mock { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    @keyframes wf-pulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+    @media (prefers-reduced-motion: no-preference) {
+      .wf-a { animation: wf-pulse 2.6s ease-in-out infinite; }
+      .wf-a:nth-child(2){animation-delay:.25s} .wf-a:nth-child(3){animation-delay:.5s}
+    }
+    @media (prefers-reduced-motion: reduce) { .wf-a { animation: none !important; } }
+  </style>
+<link href="https://inematds.github.io/caminho-certo-da-ia/curso/trilha2/modulo-2-2.html" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/caminho-certo-da-ia/en/curso/trilha2/modulo-2-2.html" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/caminho-certo-da-ia/es/curso/trilha2/modulo-2-2.html" hreflang="es" rel="alternate"/></head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen"><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../../../curso/trilha2/modulo-2-2.html" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../../../en/curso/trilha2/modulo-2-2.html" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="modulo-2-2.html" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
+<a class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg" href="#conteudo">Saltar al contenido</a>
+<!-- ===== NAV ===== -->
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4">
+<a class="flex items-center space-x-2 text-primary hover:text-yellow-300" href="../../index.html">
+<span class="text-2xl">🧭</span>
+<span class="font-bold text-lg hidden sm:inline">El Camino Correcto de la IA</span>
+</a>
+<span class="text-neutral-600">|</span>
+<a class="text-sky-400 hover:text-sky-300 text-sm font-medium" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors" href="../trilha1/index.html">
+<span class="sm:hidden">T1</span><span class="hidden sm:inline">Potenciar con IA</span>
+</a>
+<a class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10" href="index.html">
+<span class="sm:hidden">T2</span><span class="hidden sm:inline">Ser irremplazable</span>
+</a>
+<button class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-neutral-300 hover:text-neutral-100 hover:bg-dark-700 transition-colors ml-1" data-inema-journey-open="" type="button">
+<span aria-hidden="true">◷</span><span>Mi recorrido</span>
+<span aria-hidden="true" class="inema-journey-badge hidden"></span>
+</button>
+<button aria-label="Cambiar entre tema claro y oscuro" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2" id="theme-toggle">
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-dark-icon" viewbox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+<svg class="hidden w-5 h-5 text-neutral-300" fill="currentColor" id="theme-toggle-light-icon" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- ===== BREADCRUMB ===== -->
+<nav aria-label="Ruta de navegación" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex items-center space-x-2 text-sm text-neutral-400">
+<a class="hover:text-blue-400" href="../../index.html">Inicio</a><span>/</span>
+<a class="hover:text-blue-400" href="index.html">Ruta 2</a><span>/</span>
+<span class="text-blue-400">Módulo 2.2</span>
+</div>
+</nav>
+<!-- ===== HEADER DO MÓDULO ===== -->
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600" data-inema-module="2-2" data-inema-track="2">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MÓDULO 2.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🤝 Habilidades de relación y carácter</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Las seis habilidades que la máquina no <em>siente</em>: empatía genuina, conexión humana, voluntad y propósito, lidiar con la incertidumbre, aprender a aprender y coraje ético. Cuanto más digital es el mundo, más valiosas se vuelven — y el WEF lo confirma.</p>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">6</div><div class="text-xs text-neutral-400">Temas</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">~90</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Esencial</div><div class="text-xs text-neutral-400">Nivel</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Carácter</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+<div aria-label="Progreso del módulo 2.2" aria-valuemax="100" aria-valuemin="0" class="mt-6 max-w-2xl" data-inema-meter="modulo:2-2" role="progressbar">
+<div class="flex items-center justify-between text-sm mb-1">
+<span class="inema-meter-label text-neutral-400" data-inema-meter-frac="">0 de 6</span>
+<span class="text-blue-400 font-semibold" data-inema-meter-pct="">0%</span>
+</div>
+<div class="inema-bar h-2 rounded-full bg-dark-700 overflow-hidden"><div class="inema-bar__fill h-full rounded-full bg-blue-500" data-inema-meter-fill="" style="width:0%"></div></div>
+</div>
+</div>
+</header>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:grid lg:grid-cols-[220px_1fr] lg:gap-10">
+<!-- ===== TOC sticky ===== -->
+<nav aria-label="Índice de la página" class="hidden lg:block sticky top-24 self-start" data-inema-toc="">
+<p class="text-sm text-neutral-400 mb-2">Sección <span class="inema-toc-pos" data-inema-section-counter="">1</span> de 6</p>
+<ul class="space-y-1 text-sm">
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-1">1. Empatía genuina</a></li>
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-2">2. Conexión humana</a></li>
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-3">3. Voluntad y propósito</a></li>
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-4">4. Lidiar con la incertidumbre</a></li>
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-5">5. Aprender a aprender</a></li>
+<li><a class="inema-toc-link block px-2 py-1 rounded hover:bg-dark-700 text-neutral-400 hover:text-blue-400" href="#topico-6">6. Coraje ético</a></li>
+</ul>
+</nav>
+<main class="min-w-0" id="conteudo">
+<!-- SVG de abertura: o que a IA simula vs. o que o humano sente -->
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-10 overflow-hidden">
+<svg aria-label="Por un lado, la IA simula relaciones con palabras; por el otro, el ser humano siente y crea vínculos reales: empatía, vínculo, propósito, resiliencia, aprendizaje y ética" class="w-full h-auto" role="img" viewbox="0 0 1000 220">
+<defs>
+<lineargradient id="m22-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<filter height="180%" id="m22-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<pattern height="32" id="m22-grid" patternunits="userSpaceOnUse" width="32"><circle cx="1.3" cy="1.3" fill="#3b82f6" opacity="0.12" r="1.3"></circle></pattern>
+</defs>
+<rect fill="url(#m22-grid)" height="220" width="1000" x="0" y="0"></rect>
+<!-- divisória -->
+<line stroke="#374151" stroke-dasharray="9 9" stroke-width="2" x1="500" x2="500" y1="20" y2="200"></line>
+<text fill="#9ad6ff" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="250" y="34">La IA simula (palabras)</text>
+<text fill="#60a5fa" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="752" y="34">El humano siente (vínculo)</text>
+<!-- lado IA: caixa única fria -->
+<rect fill="#0e1b26" height="60" rx="13" stroke="#38bdf8" stroke-width="2" width="200" x="150" y="86"></rect>
+<text fill="#bfe6ff" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="250" y="112">respuesta generada</text>
+<text fill="#7fb8d8" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="250" y="132">suena empática, no siente</text>
+<!-- lado humano: rede de vínculos (foco) -->
+<g font-family="Inter,sans-serif" font-size="11.5" font-weight="600">
+<g filter="url(#m22-glow)"><circle cx="752" cy="112" fill="#0e1622" r="42" stroke="url(#m22-grad)" stroke-width="2.5"></circle></g>
+<text fill="#60a5fa" font-size="12" font-weight="700" text-anchor="middle" x="752" y="108">tú</text>
+<text fill="#bfdbfe" font-size="10.5" text-anchor="middle" x="752" y="124">+ personas</text>
+<circle cx="640" cy="58" fill="#0e1b26" r="26" stroke="#38bdf8" stroke-width="1.8"></circle><text fill="#bfe6ff" text-anchor="middle" x="640" y="62">empatía</text>
+<circle cx="880" cy="58" fill="#0e1b26" r="26" stroke="#38bdf8" stroke-width="1.8"></circle><text fill="#bfe6ff" text-anchor="middle" x="880" y="62">propósito</text>
+<circle cx="624" cy="170" fill="#0e1b26" r="26" stroke="#38bdf8" stroke-width="1.8"></circle><text fill="#bfe6ff" text-anchor="middle" x="624" y="174">ética</text>
+<circle cx="896" cy="170" fill="#0e1b26" r="26" stroke="#38bdf8" stroke-width="1.8"></circle><text fill="#bfe6ff" text-anchor="middle" x="896" y="174">vínculo</text>
+</g>
+<g fill="none" opacity="0.5" stroke="#60a5fa" stroke-width="1.6">
+<path d="M718,86 L658,78"></path><path d="M786,86 L862,78"></path><path d="M722,140 L642,158"></path><path d="M790,140 L878,158"></path>
+</g>
+</svg>
+<p class="text-xs text-neutral-400 mt-2 px-1">A la izquierda, la IA genera una respuesta que <em>suena</em> empática (cian aislado). A la derecha, el humano vive una <strong class="text-blue-400">red de vínculos reales</strong> — empatía, propósito, ética, conexión. Este módulo desarrolla ese lado.</p>
+</div>
+<h2 class="text-2xl font-bold mb-8">Contenido detallado</h2>
+<!-- ===================== TÓPICO 1 — EMPATIA GENUÍNA ===================== -->
+<section class="mb-16" data-inema-module="2-2" data-inema-topic="modulo-2-2#topico-1" data-inema-track="2" id="topico-1">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span>
+<h2 class="text-2xl font-bold">❤️ Empatía genuina</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar duda en este tema" type="button">
+<span aria-hidden="true">?</span><span>Tengo una duda</span>
+</button>
+</div>
+<div class="inema-prose">
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t1-p1">La empatía genuina es <strong class="text-blue-400">ponerse en el lugar del otro con profundidad</strong> — comprender dolores, miedos y contexto, y actuar a partir de ello, no solo reconocer la emoción en palabras.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Qué es</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t1-p2">Tiene dos partes: la <strong>escucha activa</strong> (escuchar para entender, no para responder) y el <strong>cuidado</strong> (hacer algo con lo que se entendió). La IA produce frases empáticas con facilidad, pero es <em>empatía simulada</em>: imita la forma sin sentirla y sin asumir el vínculo.</p>
+<div class="bg-dark-700/60 border border-dark-600 rounded-lg p-4 mb-6 text-sm">
+<p class="text-neutral-300"><strong class="text-blue-400">Escucha activa</strong> es escuchar con la intención de comprender de verdad: repetir lo que entendiste, hacer más preguntas, no interrumpir para dar la solución de inmediato. Es lo opuesto a esperar tu turno para hablar.</p>
+</div>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por qué aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t1-p3">En un mundo donde las respuestas se vuelven un commodity, lo que te diferencia es el <strong class="text-blue-400">vínculo real</strong>. Para el trabajo crítico y sensible, las personas todavía prefieren —y confían en— otras personas. La empatía es la base de eso.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+<h4 class="font-bold text-blue-400 mb-4">Empatía simulada (IA)</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start gap-2"><span class="text-blue-400">•</span><span>Reconoce la emoción en la frase.</span></li>
+<li class="flex items-start gap-2"><span class="text-blue-400">•</span><span>Genera una respuesta de consuelo plausible.</span></li>
+<li class="flex items-start gap-2"><span class="text-blue-400">•</span><span>No siente, no te recuerda, no le importas.</span></li>
+</ul>
+</div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+<h4 class="font-bold text-emerald-400 mb-4">Empatía genuina (humano)</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span>Entiende todo el contexto de la persona.</span></li>
+<li class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span>Crea vínculos y asume responsabilidades.</span></li>
+<li class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span>Actúa: no solo responde con elegancia.</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por qué esto importa (dato de WEF)</h3>
+<p class="text-neutral-300 text-sm"><strong>La empatía y la escucha activa son la 7.ª habilidad central</strong> del <em>Future of Jobs 2025</em>: esenciales para el 50% de las empresas. Incluso en la era de la automatización, la mitad del mercado considera entender al otro una de las competencias más importantes.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Empatía simulada ≠ sentida</div><p class="text-xs text-neutral-400">La IA imita la forma, no el vínculo.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Escucha activa</div><p class="text-xs text-neutral-400">Escuchar para entender, no para responder.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Cuidado que actúa</div><p class="text-xs text-neutral-400">Hacer algo con lo que se entendió.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">WEF #7 · 50%</div><p class="text-xs text-neutral-400">Empatía y escucha activa.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como leído</span><span class="inema-label-done">Leído</span>
+</button>
+</div>
+</section>
+<!-- ===================== TÓPICO 2 — CONEXÃO HUMANA ===================== -->
+<section class="mb-16" data-inema-module="2-2" data-inema-topic="modulo-2-2#topico-2" data-inema-track="2" id="topico-2">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span>
+<h2 class="text-2xl font-bold">🤝 Conexión humana</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar duda en este tema" type="button">
+<span aria-hidden="true">?</span><span>Tengo una duda</span>
+</button>
+</div>
+<div class="inema-prose">
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t2-p1">La conexión humana es <strong class="text-blue-400">crear confianza, colaboración y relaciones reales</strong> — la base para liderar, influir y construir en conjunto.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Qué es</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t2-p2">Mientras que la empatía es entender al otro, la conexión es el <strong>vínculo continuo</strong>: presencia, confianza acumulada e influencia social: lograr que las personas quieran avanzar contigo. Es lo que sostiene equipos, ventas y alianzas a lo largo del tiempo.</p>
+<div class="bg-dark-700/60 border border-dark-600 rounded-lg p-4 mb-6 text-sm">
+<p class="text-neutral-300"><strong class="text-blue-400">Influencia social</strong> no es manipulación: es la capacidad de movilizar a las personas en torno a una idea gracias a la confianza que has construido; exactamente lo que el WEF llama «liderazgo e influencia social».</p>
+</div>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por qué aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t2-p3">Cuanto más digital es el mundo, <strong class="text-blue-400">la conexión verdadera es más valiosa</strong>. Las personas confían y compran a otras personas. La IA puede redactar el mensaje, pero no construye la relación por ti.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por qué esto importa (dato de WEF)</h3>
+<p class="text-neutral-300 text-sm"><strong>El liderazgo y la influencia social son la 3.ª habilidad central</strong> del WEF: 61% de las empresas la consideran esencial — más valorada que la creatividad y que la alfabetización tecnológica. La conexión es una ventaja económica, no solo personal.</p>
+</div>
+<!-- Timeline: como a confiança se constrói -->
+<div class="space-y-6 mb-6">
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">1</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Presencia constante</h4>
+<p class="text-neutral-300 text-sm">La confianza nace de estar presente y cumplir, una y otra vez. No hay atajo automatizable para el historial que construyes con alguien.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">2</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Vulnerabilidad y honestidad</h4>
+<p class="text-neutral-300 text-sm">Admitir lo que no sabes y en qué te equivocaste te acerca a los demás. La IA nunca tiene nada en juego; tú sí, y eso es lo que crea un vínculo.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"><span class="text-blue-400 font-bold">3</span></div>
+<div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+<h4 class="font-semibold text-neutral-100 mb-2">Influencia en beneficio de los demás</h4>
+<p class="text-neutral-300 text-sm">La influencia sostenible beneficia a quienes lideras, no solo a ti. Esa es la diferencia entre liderazgo y manipulación.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Confianza</div><p class="text-xs text-neutral-400">Se construye con el tiempo, no en un mensaje.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Presencia</div><p class="text-xs text-neutral-400">Aparecer y cumplir, repetidamente.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Influencia social</div><p class="text-xs text-neutral-400">Movilizar gracias a la confianza, no a la fuerza.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">WEF #3 · 61%</div><p class="text-xs text-neutral-400">Liderazgo e influencia social.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como leído</span><span class="inema-label-done">Leído</span>
+</button>
+</div>
+</section>
+<!-- ===================== TÓPICO 3 — VONTADE E PROPÓSITO ===================== -->
+<section class="mb-16" data-inema-module="2-2" data-inema-topic="modulo-2-2#topico-3" data-inema-track="2" id="topico-3">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span>
+<h2 class="text-2xl font-bold">🔥 Voluntad y propósito</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar duda en este tema" type="button">
+<span aria-hidden="true">?</span><span>Tengo una duda</span>
+</button>
+</div>
+<div class="inema-prose">
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t3-p1"><strong class="text-blue-400">La voluntad es la energía para actuar; el propósito es la claridad del porqué.</strong> Juntos, dan dirección: deciden hacia dónde apuntará toda tu capacidad (y la de la IA).</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Qué es</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t3-p2">É a <strong>motivación intrínseca</strong> (querer desde dentro, no por una recompensa externa) sumado a la <strong>autoconciencia</strong> (saber qué te mueve). La IA no tiene deseos propios: no quiere construir una vida, cumplir un sueño ni defender una causa. Ese "querer" es exclusivamente humano y es lo que le da rumbo a la herramienta.</p>
+<div class="bg-dark-700/60 border border-dark-600 rounded-lg p-4 mb-6 text-sm">
+<p class="text-neutral-300"><strong class="text-blue-400">Motivación intrínseca</strong> es hacer algo porque te importa, no por la calificación o por tu jefe. <strong class="text-blue-400">Autoconciencia</strong> es reconocer con honestidad tus fortalezas, detonantes y valores. Sin ambas, ejecutas bien tareas que no elegiste.</p>
+</div>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por qué aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t3-p3">Cuando la ejecución se vuelve barata, la pregunta "<em>¿hacer qué y por qué?</em>" se vuelve más valiosa. El propósito es lo que evita usar todo ese poder para acelerar cosas que no importan: es el motor detrás de "definir qué hacer" (módulo 2.1).</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por qué esto importa (dato de WEF)</h3>
+<p class="text-neutral-300 text-sm"><strong>La motivación y la autoconciencia son la 5.ª habilidad central</strong> del WEF: 52% de las empresas las consideran esenciales. Lo que valora el mercado no es solo la capacidad técnica: es gente que sabe lo que quiere y tiene energía para sostenerlo.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Voluntad</div><p class="text-xs text-neutral-400">La energía que impulsa la acción.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Propósito</div><p class="text-xs text-neutral-400">La claridad del porqué.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">La IA no desea</div><p class="text-xs text-neutral-400">Querer es exclusivamente humano.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">WEF #5 · 52%</div><p class="text-xs text-neutral-400">Motivación y autoconciencia.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como leído</span><span class="inema-label-done">Leído</span>
+</button>
+</div>
+</section>
+<!-- ===================== TÓPICO 4 — LIDAR COM INCERTEZA ===================== -->
+<section class="mb-16" data-inema-module="2-2" data-inema-topic="modulo-2-2#topico-4" data-inema-track="2" id="topico-4">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span>
+<h2 class="text-2xl font-bold">🌊 Lidiar con la incertidumbre</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar duda en este tema" type="button">
+<span aria-hidden="true">?</span><span>Tengo una duda</span>
+</button>
+</div>
+<div class="inema-prose">
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t4-p1">Lidiar con la incertidumbre es <strong class="text-blue-400">actuar y adaptarse sin tener todas las respuestas</strong> — seguir adelante incluso cuando el terreno cambia bajo tus pies.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Qué es</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t4-p2">É <strong>resiliencia</strong> (recuperarse de los tropiezos), <strong>flexibilidad</strong> (cambiar de plan sin bloquearse) y <strong>agilidad</strong> (ajustar rápido). La táctica práctica es <strong class="text-blue-400">pequeña apuesta</strong>: probar con poco costo en vez de esperar una certeza total, que nunca llega.</p>
+<div class="bg-dark-700/60 border border-dark-600 rounded-lg p-4 mb-6 text-sm">
+<p class="text-neutral-300"><strong class="text-blue-400">Pequeña apuesta</strong> es un experimento pequeño y reversible: arriesgas poco, aprendes rápido del resultado y haces ajustes. Es el antídoto contra la parálisis y se relaciona directamente con «trabajar por iteración» del eje 1.</p>
+</div>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por qué aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t4-p3">El mundo cambia rápido y la IA lo acelera aún más. Quien <strong class="text-red-400">necesita seguridad absoluta para actuar se queda paralizado</strong>; quien se adapta tiene ventaja. Con ~39% de las habilidades cambiando hasta 2030, la incertidumbre es el escenario habitual.</p>
+</div>
+<!-- SVG: ciclo de adaptação (pequenas apostas) -->
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-6 overflow-hidden">
+<svg aria-label="Ciclo de adaptación: apuesta pequeña, observar el resultado, aprender, ajustar; repetir en vez de esperar a tener certeza total" class="w-full h-auto" role="img" viewbox="0 0 1000 200">
+<defs>
+<filter height="180%" id="m22d-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<lineargradient id="m22d-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<marker id="m22d-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#60a5fa"></path></marker>
+<marker id="m22d-ahc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<!-- caixa-foco: pequena aposta -->
+<g filter="url(#m22d-glow)"><rect fill="#0e1622" height="48" rx="13" stroke="url(#m22d-grad)" stroke-width="2.5" width="170" x="60" y="76"></rect></g>
+<text fill="#60a5fa" font-family="Inter,sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="145" y="100">pequeña apuesta</text>
+<text fill="#bfdbfe" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="145" y="116">prueba económica</text>
+<path d="M230,100 L330,100" fill="none" marker-end="url(#m22d-ah)" opacity="0.6" stroke="#60a5fa" stroke-width="1.8"></path>
+<rect fill="#0e1b26" height="48" rx="13" stroke="#38bdf8" stroke-width="2" width="150" x="332" y="76"></rect>
+<text fill="#bfe6ff" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="407" y="105">observar</text>
+<path d="M482,100 L582,100" fill="none" marker-end="url(#m22d-ahc)" opacity="0.6" stroke="#38bdf8" stroke-width="1.8"></path>
+<rect fill="#0e1b26" height="48" rx="13" stroke="#38bdf8" stroke-width="2" width="150" x="584" y="76"></rect>
+<text fill="#bfe6ff" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="659" y="105">aprender</text>
+<path d="M734,100 L834,100" fill="none" marker-end="url(#m22d-ahc)" opacity="0.6" stroke="#38bdf8" stroke-width="1.8"></path>
+<rect fill="#0e1b26" height="48" rx="13" stroke="#38bdf8" stroke-width="2" width="120" x="836" y="76"></rect>
+<text fill="#bfe6ff" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="896" y="105">ajustar</text>
+<!-- volta ao início (ciclo) -->
+<path d="M896,124 C896,170 145,170 145,124" fill="none" marker-end="url(#m22d-ah)" opacity="0.45" stroke="#60a5fa" stroke-dasharray="7 7" stroke-width="1.6"></path>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" x="520" y="188">repite, sin esperar a tener certeza total</text>
+</svg>
+<p class="text-xs text-neutral-400 mt-2 px-1">En vez de esperar a tener todas las respuestas, haces el ciclo: <strong class="text-blue-400">pequeña apuesta → observa → aprende → ajusta</strong>, y vuelve al comienzo. La incertidumbre se convierte en materia prima para aprender, no en motivo para paralizarse.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por qué esto importa (dato de WEF)</h3>
+<p class="text-neutral-300 text-sm"><strong>La resiliencia, la flexibilidad y la agilidad son la 2.ª habilidad central</strong> del WEF: 67% de las empresas las consideran esenciales — solo por detrás del pensamiento analítico. Adaptarse se convirtió en una competencia de primer nivel.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Resiliencia</div><p class="text-xs text-neutral-400">Recuperarse de los tropiezos.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Pequeña apuesta</div><p class="text-xs text-neutral-400">Probar a bajo costo en vez de esperar.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Agilidad</div><p class="text-xs text-neutral-400">Ajustarse rápido cuando algo cambia.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">WEF #2 · 67%</div><p class="text-xs text-neutral-400">Resiliencia, flexibilidad y agilidad.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como leído</span><span class="inema-label-done">Leído</span>
+</button>
+</div>
+</section>
+<!-- ===================== TÓPICO 5 — APRENDER A APRENDER ===================== -->
+<section class="mb-16" data-inema-module="2-2" data-inema-topic="modulo-2-2#topico-5" data-inema-track="2" id="topico-5">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span>
+<h2 class="text-2xl font-bold">🧠 Aprender a aprender</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar duda en este tema" type="button">
+<span aria-hidden="true">?</span><span>Tengo una duda</span>
+</button>
+</div>
+<div class="inema-prose">
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t5-p1">Aprender a aprender es <strong class="text-blue-400">estudiar continuamente, dejar atrás lo que quedó obsoleto y volver a aprender lo que cambió</strong> — mantener tu propia mente actualizada de forma intencional.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Qué es</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t5-p2">Tiene tres movimientos: aprender (lo nuevo), <strong>desaprender</strong> (dejar la práctica antigua que ya no sirve) y volver a aprender (rehacer con lo que cambió). Es la habilidad que usas para dominar cualquier otra, incluidas las de este curso.</p>
+<div class="bg-dark-700/60 border border-dark-600 rounded-lg p-4 mb-6 text-sm">
+<p class="text-neutral-300"><strong class="text-blue-400">Desaprender</strong> es renunciar a un hábito o una creencia que antes fue útil y hoy es un obstáculo. Suele ser más difícil que aprender, porque afecta tu identidad profesional, pero es lo que distingue a quienes se actualizan de quienes se estancan.</p>
+</div>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por qué aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t5-p3">Con la IA, el conocimiento técnico envejece rápido: <strong class="text-blue-400">~39% de las habilidades cambiarán hasta 2030</strong> (WEF). Y hay una ironía reveladora: la propia IA falla justamente por <em>no</em> saber aprender: el MIT identificó la "brecha de aprendizaje" (la herramienta olvida el contexto y no evoluciona) como la causa raíz de las fallas corporativas. Saber aprender es la ventaja humana que la máquina todavía no tiene.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por qué esto importa (dato de WEF + MIT)</h3>
+<p class="text-neutral-300 text-sm"><strong>La curiosidad y el aprendizaje a lo largo de la vida son la 8.ª habilidad central del WEF</strong> (50% de las empresas). Y el MIT muestra el otro lado: la <strong>"brecha de aprendizaje" de la IA</strong> — no aprende de tus comentarios (65% se queja de esto) ni retiene el contexto (60%); es la razón principal por la que fallan los proyectos. Lo que le falta a la máquina es justamente tu ventaja.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Desaprender</div><p class="text-xs text-neutral-400">Dejar lo que ya no sirve.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">~39% cambian</div><p class="text-xs text-neutral-400">De las habilidades, hasta 2030 (WEF).</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Brecha de la IA</div><p class="text-xs text-neutral-400">La máquina no aprende de ti (MIT).</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">WEF #8 · 50%</div><p class="text-xs text-neutral-400">Curiosidad y aprendizaje a lo largo de la vida.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como leído</span><span class="inema-label-done">Leído</span>
+</button>
+</div>
+</section>
+<!-- ===================== TÓPICO 6 — CORAGEM ÉTICA ===================== -->
+<section class="mb-16" data-inema-module="2-2" data-inema-topic="modulo-2-2#topico-6" data-inema-track="2" id="topico-6">
+<div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+<div class="flex items-center space-x-4">
+<span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span>
+<h2 class="text-2xl font-bold">⚖️ Valentía ética</h2>
+</div>
+<button aria-pressed="false" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-dark-700 border border-dark-600 text-neutral-300 hover:bg-dark-600 transition-colors text-sm" data-inema-doubt-toggle="" title="Marcar duda en este tema" type="button">
+<span aria-hidden="true">?</span><span>Tengo una duda</span>
+</button>
+</div>
+<div class="inema-prose">
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t6-p1">La valentía ética es <strong class="text-blue-400">tener principios y actuar de acuerdo con ellos</strong> en un mundo en el que la tecnología sirve tanto para ayudar como para manipular, hacer lo correcto incluso cuando es difícil o costoso.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Qué es</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t6-p2">La pregunta clave cambió. Antes solo era <em>"¿esto es posible?"</em>. Como la IA hace posible casi todo, la pregunta que importa pasó a ser: <strong class="text-blue-400">"¿es posible, pero es correcto?"</strong>. El coraje ético consiste en no delegar esa decisión a la máquina y asumir la responsabilidad por lo que haces con su poder.</p>
+<h3 class="text-xl font-bold mb-3 text-neutral-100">Por qué aprender</h3>
+<p class="text-neutral-300 mb-6 leading-relaxed" data-inema-block="m2-2-t6-p3">La IA no tiene responsabilidad: tú sí. Ejecuta lo que le pidas, sin juzgar las consecuencias. Le corresponde al humano decidir <strong>qué vale la pena hacer, por qué, para quién y con qué consecuencias</strong>. Sin valentía ética, todo el poder de los ejes 1 y 2 puede apuntar al lugar equivocado.</p>
+</div>
+<!-- Fluxo de decisão ética -->
+<div class="rounded-2xl border border-blue-500/30 bg-dark-900/40 p-3 sm:p-4 mb-6 overflow-hidden">
+<svg aria-label="Dos preguntas en secuencia: ¿es posible? Casi siempre sí con IA; ¿es correcto? Solo tú lo decides y asumes la responsabilidad" class="w-full h-auto" role="img" viewbox="0 0 1000 200">
+<defs>
+<filter height="180%" id="m22f-glow" width="180%" x="-40%" y="-40%"><fegaussianblur result="b" stddeviation="1.8"></fegaussianblur><femerge><femergenode in="b"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+<lineargradient id="m22f-grad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#3b82f6"></stop></lineargradient>
+<marker id="m22f-ah" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#60a5fa"></path></marker>
+<marker id="m22f-ahc" markerheight="9" markerwidth="9" orient="auto" refx="6.5" refy="4.5"><path d="M0,0 L8,4.5 L0,9 L2.4,4.5 Z" fill="#38bdf8"></path></marker>
+</defs>
+<!-- pergunta 1: é possível (IA responde fácil) -->
+<rect fill="#0e1b26" height="48" rx="13" stroke="#38bdf8" stroke-width="2" width="180" x="50" y="76"></rect>
+<text fill="#bfe6ff" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="140" y="98">¿es posible?</text>
+<text fill="#7fb8d8" font-family="Inter,sans-serif" font-size="10.5" text-anchor="middle" x="140" y="115">la IA casi siempre dice "sí"</text>
+<path d="M230,100 L360,100" fill="none" marker-end="url(#m22f-ahc)" opacity="0.6" stroke="#38bdf8" stroke-width="1.8"></path>
+<text fill="#9ad6ff" font-family="Inter,sans-serif" font-size="11" font-weight="600" text-anchor="middle" x="295" y="90">sí</text>
+<!-- pergunta 2: é correto? (caixa-foco, só você) -->
+<g filter="url(#m22f-glow)"><rect fill="#0e1622" height="56" rx="14" stroke="url(#m22f-grad)" stroke-width="2.5" width="200" x="362" y="72"></rect></g>
+<text fill="#60a5fa" font-family="Inter,sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="462" y="96">¿es correcto?</text>
+<text fill="#bfdbfe" font-family="Inter,sans-serif" font-size="11" text-anchor="middle" x="462" y="114">solo tú decides</text>
+<path d="M562,100 L692,100" fill="none" marker-end="url(#m22f-ah)" opacity="0.6" stroke="#60a5fa" stroke-width="1.8"></path>
+<!-- saída: responsabilidade humana -->
+<rect fill="#0e1622" height="48" rx="13" stroke="#60a5fa" stroke-width="2" width="256" x="694" y="76"></rect>
+<text fill="#93c5fd" font-family="Inter,sans-serif" font-size="13" font-weight="600" text-anchor="middle" x="822" y="98">tú asumes la responsabilidad</text>
+<text fill="#bfdbfe" font-family="Inter,sans-serif" font-size="10.5" text-anchor="middle" x="822" y="115">para quién · por qué · consecuencias</text>
+</svg>
+<p class="text-xs text-neutral-400 mt-2 px-1">La IA resuelve la primera pregunta (<strong class="text-blue-400">"¿es posible?"</strong>) sin esfuerzo. La segunda (<strong class="text-blue-400">"¿es correcto?"</strong>, destacada) es donde entra el coraje ético — y donde la responsabilidad recae en ti, nunca en la máquina.</p>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-red-400 mb-2 flex items-center"><span class="mr-2">⚠️</span> El riesgo de delegar la ética</h3>
+<p class="text-neutral-300 text-sm">"La IA que decidió" no existe como excusa. Cuando delegas la decisión a la máquina, no desapareces de la responsabilidad: solo pierdes el control sobre ella. La valentía ética consiste en mantener la mano en el timón, incluso cuando sería más cómodo soltarlo.</p>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+<h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">📌</span> Por qué esto importa</h3>
+<p class="text-neutral-300 text-sm">Es el cierre de los dos ejes. "AI Snake Oil" (Princeton) muestra que se vende la IA como capaz de hacer cosas que no puede hacer: herramientas que prometen predecir el desempeño laboral sin pruebas. El coraje ético es el antídoto: <strong>"¿es posible, pero es correcto?"</strong> aplicado a cada uso de la IA.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">"¿Es correcto?"</div><p class="text-xs text-neutral-400">La pregunta que importa en la era de la IA.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Responsabilidad</div><p class="text-xs text-neutral-400">Se queda contigo, no con la máquina.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">No delegar</div><p class="text-xs text-neutral-400">"La IA decidió" no es una excusa.</p></div>
+<div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4"><div class="text-blue-400 font-semibold text-sm mb-1">Anti-estafa</div><p class="text-xs text-neutral-400">Ética aplicada a cada uso.</p></div>
+</div>
+<div class="flex justify-start mt-6">
+<button aria-pressed="false" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 transition-colors" data-inema-read-toggle="" type="button">
+<span aria-hidden="true" class="inema-ico-todo">○</span><span aria-hidden="true" class="inema-ico-done">●</span>
+<span class="inema-label-todo">Marcar como leído</span><span class="inema-label-done">Leído</span>
+</button>
+</div>
+</section>
+<!-- ===== RESUMO DO MÓDULO ===== -->
+<section class="mb-12">
+<div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">🤝</span> Resumen del módulo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Empatía genuina</strong><span class="text-neutral-400"> — vínculo real frente a empatía simulada (WEF #7, 50%).</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Conexión humana</strong><span class="text-neutral-400"> — confianza e influencia social (WEF #3, 61%).</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Voluntad y propósito</strong><span class="text-neutral-400"> — la IA no desea; tú marcas el rumbo (WEF #5, 52%).</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Lidiar con la incertidumbre</strong><span class="text-neutral-400"> — las pequeñas apuestas vencen la parálisis (WEF #2, 67%).</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Aprender a aprender</strong><span class="text-neutral-400"> — desaprender y volver a aprender; la brecha de la IA es tu ventaja (WEF #8, 50% + MIT).</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-neutral-100">Valentía ética</strong><span class="text-neutral-400"> — «¿es posible, pero es correcto?»; la responsabilidad es tuya.</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+<h3 class="font-semibold text-blue-400 mb-2">Completaste la Ruta 2.</h3>
+<p class="text-neutral-300">Las 12 habilidades humanas están cubiertas (6 de mente + 6 de relación y carácter). El siguiente paso es el plan de 4 semanas, al inicio del curso: trabajar los dos ejes en paralelo.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors" href="modulo-2-1.html">← Módulo 2.1</a>
+<a class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors" href="index.html">Volver a la Ruta →</a>
+</div>
+</div>
+</section>
+</main>
+</div>
+<footer class="border-t border-dark-600 py-8 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+<p>El Camino Correcto de la IA · Módulo 2.2 — Habilidades de relación y carácter · <a class="text-sky-400 hover:text-sky-300" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a></p>
+</div>
+</footer>
+<!-- ===== JS-NÚCLEO v1 ===== -->
+<script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      if (!topicItem) return;
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => { if (exp !== explanation) exp.classList.remove('active'); });
+      explanation.classList.toggle('active');
+    }
+    function openModal(modalId) { const m = document.getElementById(modalId); if (m) { m.classList.remove('hidden'); document.body.style.overflow = 'hidden'; } }
+    function closeModal() { document.querySelectorAll('.modal').forEach(m => m.classList.add('hidden')); document.body.style.overflow = 'auto'; }
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    (function () {
+      const themeToggle = document.getElementById('theme-toggle');
+      const darkIcon = document.getElementById('theme-toggle-dark-icon');
+      const lightIcon = document.getElementById('theme-toggle-light-icon');
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) lightIcon.classList.remove('hidden'); else darkIcon.classList.remove('hidden');
+      themeToggle.addEventListener('click', () => {
+        darkIcon.classList.toggle('hidden'); lightIcon.classList.toggle('hidden');
+        html.classList.toggle('dark');
+        const isDark = html.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        try { if (window.INEMA && INEMA.setPref) INEMA.setPref('theme', isDark ? 'inema-dark' : 'claro'); } catch (e) {}
+      });
+    })();
+  </script>
+<!-- ===== INIT (camada de aprendizagem). REL=../.. ===== -->
+<script src="../../../assets/learn.js"></script>
+<script>
+    if (window.INEMA && typeof window.INEMA.init === 'function') { window.INEMA.init(); }
+  </script>
+</body>
+</html>
